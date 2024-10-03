@@ -1,0 +1,17 @@
+.inputContainer {
+  float: left;
+  width: 50%;
+  height: 100vh;
+  ;
+  padding: 5%;
+  box-sizing: border-box;
+}
+
+.inputField {
+  height: 80vh;
+  width: 100%;
+  padding: 20px;
+  font-size: 16px;
+  border: 1px solid #61dafb;
+  border-radius: 4px;
+}
