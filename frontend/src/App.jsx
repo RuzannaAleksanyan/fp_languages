@@ -3,6 +3,9 @@ import './App.css';
 import Input from './components/input/Input';
 import Output from './components/output/Output';
 
+import Run from './components/button/run/Run';
+import DarkLight from './components/button/darklight/DarkLight'
+
 function App() {
   const [value, setValue] = useState('')
   return (
@@ -10,6 +13,8 @@ function App() {
       <Input value={value} setValue={setValue} /> 
       {/* {value} */}
       <Output/>
+      <Run/>
+      <DarkLight/>
     </div>
   );
 }

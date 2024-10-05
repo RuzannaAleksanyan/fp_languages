@@ -1,6 +1,5 @@
 import React from 'react';
 import classes from './Input.module.css'
-// import './Input.css'; // Fixed import path
 
 const InputField = ({ value, setValue }) => {
   return (
