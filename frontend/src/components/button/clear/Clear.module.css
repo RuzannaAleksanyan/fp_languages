@@ -1,20 +1,20 @@
 .inputContainer {
-    padding: 10px 10px;
+    padding: 10px 20px;
     border-radius: 5px;
     position: absolute;
     top: 10px;
-    left: 90px;
+    right: 10px;
 }
 
 .inputField {
     border: 1px solid #61dafb;
-    color: rgb(19, 18, 18);
     height: 70px;
     width: 70px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+    margin: 6px 6px;
     cursor: pointer;
     border-radius: 8px;
     transition: background-color 0.3s ease;

@@ -1,19 +1,18 @@
 import React from 'react';
-import classes from './Run.module.css';
+import classes from './Clear.module.css';
 
-const RunField = () => {
+const ClearField = () => {
   const handleClick = () => {
-    console.log('Button clicked!');
+    console.log('Clear clicked!');
   };
 
   return (
     <div className={classes.inputContainer}>
       <button onClick={handleClick} className={classes.inputField}>
-        {/* {value} */}
-        run
+        Clear
       </button>
     </div>
   );
 };
 
-export default RunField;
+export default ClearField;

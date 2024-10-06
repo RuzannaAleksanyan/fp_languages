@@ -16,11 +16,10 @@ const ButtonField = () => {
       style={{
         backgroundColor: isDarkMode ? 'black' : 'white', // Change background color
         color: isDarkMode ? 'white' : 'black', // Change text color for better visibility
-        height: '100vh', // Set height to fill the viewport for visual effect
       }}
     >
       <button onClick={handleToggleBackground} className={classes.inputField}>
-        {isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+        {isDarkMode ? 'Light' : 'Dark'}
       </button>
     </div>
   );
