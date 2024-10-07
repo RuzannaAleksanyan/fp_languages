@@ -7,8 +7,8 @@ const RunField = () => {
   };
 
   return (
-    <div className={classes.inputContainer}>
-      <button onClick={handleClick} className={classes.inputField}>
+    <div className={classes.runContainer}>
+      <button onClick={handleClick} className={classes.runField}>
         {/* {value} */}
         run
       </button>

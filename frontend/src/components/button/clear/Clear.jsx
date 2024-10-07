@@ -7,8 +7,8 @@ const ClearField = () => {
   };
 
   return (
-    <div className={classes.inputContainer}>
-      <button onClick={handleClick} className={classes.inputField}>
+    <div className={classes.clearContainer}>
+      <button onClick={handleClick} className={classes.clearField}>
         Clear
       </button>
     </div>

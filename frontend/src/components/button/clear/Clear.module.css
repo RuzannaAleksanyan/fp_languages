@@ -1,4 +1,4 @@
-.inputContainer {
+.clearContainer {
     padding: 10px 20px;
     border-radius: 5px;
     position: absolute;
@@ -6,7 +6,7 @@
     right: 10px;
 }
 
-.inputField {
+.clearField {
     border: 1px solid #61dafb;
     height: 70px;
     width: 70px;

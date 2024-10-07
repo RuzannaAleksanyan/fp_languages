@@ -12,13 +12,13 @@ const ButtonField = () => {
 
   return (
     <div
-      className={classes.inputContainer}
+      className={classes.darkLightContainer}
       style={{
         backgroundColor: isDarkMode ? 'black' : 'white', // Change background color
         color: isDarkMode ? 'white' : 'black', // Change text color for better visibility
       }}
     >
-      <button onClick={handleToggleBackground} className={classes.inputField}>
+      <button onClick={handleToggleBackground} className={classes.darkLightField}>
         {isDarkMode ? 'Light' : 'Dark'}
       </button>
     </div>

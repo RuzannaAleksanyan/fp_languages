@@ -1,5 +1,5 @@
 /* Run.module.css */
-.inputContainer {
+.runContainer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,7 +7,7 @@
   margin-left: 20px;
 }
 
-.inputField {
+.runField {
   border: 1px solid #61dafb;
   color: rgb(19, 18, 18);
   padding: 15px 32px;
