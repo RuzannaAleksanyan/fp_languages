@@ -8,9 +8,9 @@
 
 .inputField {
   height: 80vh;
-  width: 100%;
+  width: 700px;
   padding: 20px;
   font-size: 16px;
-  border: 1px solid #61dafb;
+  border: 1px solid #000000;
   border-radius: 4px;
 }
