@@ -7,6 +7,10 @@
   margin-left: 20px;
 }
 
+.runContainer :hover {
+  background-color: #baedbc;
+}
+
 .runField {
   border: 1px solid #61dafb;
   color: rgb(19, 18, 18);
