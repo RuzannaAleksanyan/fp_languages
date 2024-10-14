@@ -1,9 +1,14 @@
 import React from 'react';
 import classes from './Clear.module.css';
 
-const ClearField = () => {
+const ClearField = ({ value, setValue }) => {
   const handleClick = () => {
-    console.log('Clear clicked!');
+    if (value !== '') {
+      console.log('Clearing input!');
+      setValue('');
+    } else {
+      console.log('Nothing to clear!');
+    }
   };
 
   return (
