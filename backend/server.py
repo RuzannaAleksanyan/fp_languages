@@ -1,17 +1,18 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+from bekus_fp_language import run_bekus_fp 
 
 app = Flask(__name__)
-CORS(app)  # Enable Cross-Origin Resource Sharing
+CORS(app) 
 
-# Endpoint to receive input data
 @app.route('/api/input', methods=['POST'])
 def receive_input():
-    data = request.get_json()  # Get the JSON data from the request
+    data = request.get_json() 
     user_input = data.get('userInput')
+    # stugum db-um
+    run_bekus_fp(user_input)
+    # save db
     print(f"Received input: {user_input}")
-    
-    # Here you can process the input (e.g., save it, transform it, etc.)
     
     return jsonify({'message': 'Input received successfully', 'receivedInput': user_input}), 200
 
