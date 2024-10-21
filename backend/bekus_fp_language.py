@@ -14,15 +14,16 @@ def run_bekus_fp(user_input):
             right2 = rows[1][:f_2]
             rows[1] = rows[1][f_2 + 1:].strip()
             if rows[1][len(rows[1]) - 1] != ')':
-                # exception
-                print("error")
+                error = "error: A function call does not end with )."
+                return error
             rows[1] = rows[1][:-1]
             
         if right1 != right2:
-            # exception
-            print("error") 
+            error = "error: An invalid function is called"
+            return error 
         
-        parse(rows[0], rows[1])
+        # ???
+        return parse(rows[0], rows[1])
     
 
 

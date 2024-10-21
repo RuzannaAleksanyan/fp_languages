@@ -10,7 +10,7 @@ def receive_input():
     data = request.get_json() 
     user_input = data.get('userInput')
     # stugum db-um
-    run_bekus_fp(user_input)
+    output = run_bekus_fp(user_input)
     # save db
     print(f"Received input: {user_input}")
     
