@@ -22,54 +22,77 @@ def run_bekus_fp(user_input):
             error = "error: An invalid function is called"
             return error 
         
-        # ???
-        return parse(rows[0], rows[1])
-    
+        if are_valid_arguments(rows[1]):
+            return parse(rows[0], rows[1])
+        else:
+            error = "error: Function is called with wrong arguments"
+            return error
 
+        
+    
+def are_valid_arguments(*args):
+    def is_valid_value(value):
+        return isinstance(value, (int, float, bool)) or value is None
+
+    for arg in args:
+        if isinstance(arg, list):
+            for item in arg:
+                if not is_valid_value(item):
+                    return False  
+        elif not is_valid_value(arg):
+            return False
+
+    return True
 
 def parse(function, argument):
-    # paren_index = user_input.find('(')
-    # if paren_index != -1:
-    #     functiontion = user_input[:paren_index]
-    #     argument = user_input[paren_index:]
+    paren_index = function.find('(')
+    if paren_index != -1:
+        func = function[:paren_index]
+        arg = function[paren_index:]
     # print(f"arument: {argument}")
-    # parse(functiontion, argument)
+    # parse(func, argument)
 
-    if function == "si":
-        print("si") 
-    if function == "tl":
-        print("tl")
-    if function == "apndl":
-        print("apndl")
-    if function == "apndr":
-        print("apndr")
-    if function == "null":
-        print("null")
-    if function == "atom":
-        print("atom")
-    if function == "eq":
-        print("eq")
-    if function == "+":
-        print("+")
-    if function == "-":
-        print("-")
-    if function == "*":
-        print("*")
-    if function == "and":
-        print("and")
-    if function == "or":
-        print("or")
-    if function == "not":
-        print("not")
-    if function == "comp":
-        print("comp")
-    if function == "constr":
-        print("constr")
-    if function == "const":
-        print("const")
-    if function == "cond":
-        print("cond")
-    if function == "atom":
-        print("atom")
-    if function == "eq":
-        print("eq")
+    print("...........")
+    # print(func)
+    print(argument)
+
+    # if func == "si":
+    #     print("si") 
+    # if func == "id":
+    #     print("id")
+    # if func == "tl":
+    #     print("tl")
+    # if func == "apndl":
+    #     print("apndl")
+    # if func == "apndr":
+    #     print("apndr")
+    # if func == "null":
+    #     print("null")
+    # if func == "atom":
+    #     print("atom")
+    # if func == "eq":
+    #     print("eq")
+    # if func == "+":
+    #     print("+")
+    # if func == "-":
+    #     print("-")
+    # if func == "*":
+    #     print("*")
+    # if func == "and":
+    #     print("and")
+    # if func == "or":
+    #     print("or")
+    # if func == "not":
+    #     print("not")
+    # if func == "comp":
+    #     print("comp")
+    # if func == "constr":
+    #     print("constr")
+    # if func == "const":
+    #     print("const")
+    # if func == "cond":
+    #     print("cond")
+    # if func == "atom":
+    #     print("atom")
+    # if func == "eq":
+    #     print("eq")
