@@ -22,44 +22,61 @@ def run_bekus_fp(user_input):
             error = "error: An invalid function is called"
             return error 
         
-        if are_valid_arguments(rows[1]):
-            return parse(rows[0], rows[1])
-        else:
-            error = "error: Function is called with wrong arguments"
-            return error
+        # if are_valid_arguments(rows[1]):
+        return parse(rows[0], rows[1])
+        # else:
+        #     error = "error: Function is called with wrong arguments"
+        #     return error
 
         
-    
-def are_valid_arguments(*args):
-    def is_valid_value(value):
-        return isinstance(value, (int, float, bool)) or value is None
+# # ???
+# def are_valid_arguments(*args):
+#     # ???
+#     args
+#     # print(args)
+#     # def is_valid_value(value):
+#     #     return isinstance(value, (int, float, bool)) or value is None
 
-    for arg in args:
-        if isinstance(arg, list):
-            for item in arg:
-                if not is_valid_value(item):
-                    return False  
-        elif not is_valid_value(arg):
-            return False
+#     # for arg in args:
+#     #     if isinstance(arg, list):
+#     #         for item in arg:
+#     #             if not is_valid_value(item):
+#     #                 return False  
+#     #     elif not is_valid_value(arg):
+#     #         return False
 
-    return True
+#     return True
 
 def parse(function, argument):
     paren_index = function.find('(')
     if paren_index != -1:
+        # if paren_index != -1:
         func = function[:paren_index]
-        arg = function[paren_index:]
-    # print(f"arument: {argument}")
-    # parse(func, argument)
+        # kzmakerpel rekursiv funkcia
+        # func_arg = function[paren_index:]
+    else:
+        func = function
+        function_validation(func, argument)
+   
 
-    print("...........")
-    # print(func)
-    print(argument)
-
-    # if func == "si":
-    #     print("si") 
-    # if func == "id":
-    #     print("id")
+def function_validation(func, arguments):
+    if func == "si":
+        index = func[1:]
+        if valid_index(index):
+            # index cast to int
+            print("roz")
+            print(arguments)
+            return si(index, arguments)
+        else:
+            error = "non valid index"
+            return error
+    if func == "id":
+        return id(arguments)
+    if func == "eq":
+        # ???
+        # print("roz")
+        # print(eq(arguments))
+        return eq(arguments)
     # if func == "tl":
     #     print("tl")
     # if func == "apndl":
@@ -70,8 +87,6 @@ def parse(function, argument):
     #     print("null")
     # if func == "atom":
     #     print("atom")
-    # if func == "eq":
-    #     print("eq")
     # if func == "+":
     #     print("+")
     # if func == "-":
@@ -96,3 +111,23 @@ def parse(function, argument):
     #     print("atom")
     # if func == "eq":
     #     print("eq")
+    else:
+        error = "non valid function"
+        return error
+
+
+def valid_index(index):
+    index += 1
+    return True
+
+def si(index, arguments):
+    return arguments[index]
+
+
+def id(*arguments): 
+    return arguments
+
+def eq(arguments):
+    if len(arguments) > 2:
+        error = "eq funckian stanum e miayn erku parametr"
+        return error

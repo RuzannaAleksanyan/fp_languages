@@ -11,6 +11,8 @@ def receive_input():
     user_input = data.get('userInput')
     # stugum db-um
     output = run_bekus_fp(user_input)
+    print("output")
+    print(output)
     # save db
     print(f"Received input: {user_input}")
     
