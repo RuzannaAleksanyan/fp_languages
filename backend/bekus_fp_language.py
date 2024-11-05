@@ -21,62 +21,81 @@ def run_bekus_fp(user_input):
             return "error: An invalid function is called!"
         
         # if are_valid_arguments(rows[1]):
-        return parse(rows[0], rows[1])
+        arguments = spliting_arguments(rows[1])
+        # print("arguments:")
+        # print(arguments)
+        # print(rows[0])
+        return parse(rows[0], arguments)
         # else:
         #     return "error: Function is called with wrong arguments"
 
     return "error: Input format is incorrect."
 
-        
-# # ???
-# def are_valid_arguments(*args):
-#     # ???
-#     args
-#     # print(args)
-#     # def is_valid_value(value):
-#     #     return isinstance(value, (int, float, bool)) or value is None
 
-#     # for arg in args:
-#     #     if isinstance(arg, list):
-#     #         for item in arg:
-#     #             if not is_valid_value(item):
-#     #                 return False  
-#     #     elif not is_valid_value(arg):
-#     #         return False
+def spliting_arguments(input_string):
+    # Split the string by spaces
+    words = input_string.split(' ')
+    filtered_array = []
 
-#     return True
+    for word in words:
+        if word.isdigit():
+            filtered_array.append(int(word))
+        elif word.lower() == 'none': 
+            filtered_array.append(None)
+        elif word.lower() == 'true':
+            filtered_array.append(True)
+        elif word.lower() == 'false':
+            filtered_array.append(False)
+        else:
+            return "error: The function is not called with the correct arguments"  # 
 
-def parse(function, argument):
+    return filtered_array
+
+def parse(function, callable_argument):
     paren_index = function.find('(')
     if paren_index != -1:
-        # if paren_index != -1:
         func = function[:paren_index]
-        # kazmakerpel rekursiv funkcia
-        # func_arg = function[paren_index:]
+        arg = function[paren_index:]
     else:
         func = function
-        return function_validation(func, argument)
+        arg = ""
+    print("1")
+    print(func)
+    print(arg)
+    if arg != "":   
+        if arg.startswith('(') and arg.endswith(')'):
+            # Remove the first and last characters (the parentheses)
+            arg =  arg[1:-1]
+        else:
+            return "error: The parentheses ( or ) are not placed correctly."
+    
+    return function_validation(func, callable_argument, arg)
    
 
-def function_validation(func, arguments):
-    if func == "si":
-        index = func[1:]
-        if valid_index(index):
-            # index cast to int
-            print("roz")
-            print(arguments)
-            return si(index, arguments)
-        else:
-            error = "non valid index"
-            return error
-    if func == "id":
-        # stugel argumentnery chisht en te voch
-        return id(arguments)
-    if func == "eq":
-        # ???
-        # print("roz")
-        # print(eq(arguments))
-        return eq(arguments)
+def function_validation(func, callable_argument, arg = ""):
+    if arg == "":
+        if func == "id":
+            return id(callable_argument)
+    # print(func)
+    # print(callable_argument)
+    # print(arg)
+
+    # if func == "si":
+    #     index = func[1:]
+    #     if valid_index(index):
+    #         # index cast to int
+    #         print("roz")
+    #         print(arg)
+    #         return si(index, arg)
+    #     else:
+    #         error = "non valid index"
+    #         return error
+    
+    # if func == "eq":
+    #     # ???
+    #     # print("roz")
+    #     # print(eq(arguments))
+    #     return eq(arg)
     # if func == "tl":
     #     print("tl")
     # if func == "apndl":
@@ -111,42 +130,9 @@ def function_validation(func, arguments):
     #     print("atom")
     # if func == "eq":
     #     print("eq")
-    else:
-        return "Non valid function!"
+    # else:
+    #     return "Non valid function!"
 
-
-def valid_index(index):
-    index += 1
-    return True
-
-def si(index, arguments):
-    return arguments[index]
-
-# def validating_id_function_arguments(*arguments):
-#     def is_valid_value(value):
-#         # Check if value is an int, float, bool, or None
-#         return isinstance(value, (int, float, bool)) or value is None
-
-#     # Check each argument in the input arguments
-#     for arg in arguments:
-#         if arg == 'true' or arg == 'false' or arg == 'nil':
-#             continue
-#         if isinstance(arg, list):
-#             # If it's a list, check each item in the list
-#             for item in arg:
-#                 if not is_valid_value(item):
-#                     return False  # Invalid item found
-#         elif not is_valid_value(arg):
-#             return False  # Invalid argument found
-
-#     return True
 
 def id(*arguments): 
-    print("............")
-    print(arguments)
     return arguments
-
-def eq(arguments):
-    if len(arguments) > 2:
-        error = "eq funckian stanum e miayn erku parametr"
-        return error
