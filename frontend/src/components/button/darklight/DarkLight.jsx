@@ -8,6 +8,7 @@ const DarkLight = ({ toggleDarkMode, isDarkMode }) => {
     <button onClick={toggleDarkMode} className={classes.darkLightButton}>
       <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} className={classes.icon} />
     </button>
+
   );
 };
 
