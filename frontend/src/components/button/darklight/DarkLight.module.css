@@ -1,21 +1,27 @@
-.darkLightContainer {
-    padding: 10px 10px;
-    border-radius: 5px;
-    position: absolute;
-    top: 10px;
-    left: 90px;
-}
-
-.darkLightField {
-    border: 1px solid #61dafb;
-    color: rgb(19, 18, 18);
-    height: 70px;
-    width: 70px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+.darkLightButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    /* background-color: transparent; */
+    /* border: 1px solid #555; */
     cursor: pointer;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
-}
+    /* transition: background-color 0.3s ease, border-color 0.3s ease; */
+  }
+  
+  .darkLightButton:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: white; 
+  }
+  
+  .darkLightButton:active {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: #000000;
+  }
+  
+  .icon {
+    font-size: 24px;
+    color: #000000;
+  }
+  

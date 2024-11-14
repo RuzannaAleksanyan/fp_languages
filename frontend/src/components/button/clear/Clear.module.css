@@ -1,21 +1,31 @@
-.clearContainer {
-    padding: 10px 20px;
-    border-radius: 5px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-}
-
-.clearField {
-    border: 1px solid #61dafb;
-    height: 70px;
-    width: 70px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
+.clearButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 15px;
+    background-color: #dc3545; /* Red color for Clear button */
+    color: white;
     font-size: 16px;
-    margin: 6px 6px;
-    cursor: pointer;
+    font-weight: bold;
+    border: none;
     border-radius: 8px;
-    transition: background-color 0.3s ease;
-}
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  .clearButton:hover {
+    background-color: #c82333; /* Darker shade on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+  }
+  
+  .clearButton:active {
+    background-color: #bd2130; /* Even darker shade when pressed */
+    transform: scale(0.98); /* Slightly shrink when clicked */
+  }
+  
+  .icon {
+    margin-right: 8px; /* Space between icon and text */
+    font-size: 18px; /* Slightly larger icon */
+  }
+  

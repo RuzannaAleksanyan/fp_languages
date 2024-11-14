@@ -1,4 +1,4 @@
-/* Run.module.css */
+/* Run.module.css
 .runContainer {
   display: flex;
   justify-content: center;
@@ -34,4 +34,36 @@
 .runField:active {
   background-color: #3e8e41;
   transform: scale(0.98);
+} */
+ 
+
+.runButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 15px;
+  background-color: #28a745; /* Green color for Run button */
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.runButton:hover {
+  background-color: #218838; /* Darker shade on hover */
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.runButton:active {
+  background-color: #1e7e34; /* Even darker shade when pressed */
+  transform: scale(0.98); /* Slightly shrink when clicked */
+}
+
+.icon {
+  margin-right: 8px; /* Space between icon and text */
+  font-size: 18px; /* Slightly larger icon */
 }

@@ -1,18 +1,13 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 import classes from './DarkLight.module.css';
 
 const DarkLight = ({ toggleDarkMode, isDarkMode }) => {
   return (
-    <div
-      className={classes.darkLightContainer}
-      style={{
-        color: isDarkMode ? 'white' : 'black',
-      }}
-    >
-      <button onClick={toggleDarkMode} className={classes.darkLightField}>
-        {isDarkMode ? 'Light' : 'Dark'}
-      </button>
-    </div>
+    <button onClick={toggleDarkMode} className={classes.darkLightButton}>
+      <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} className={classes.icon} />
+    </button>
   );
 };
 
