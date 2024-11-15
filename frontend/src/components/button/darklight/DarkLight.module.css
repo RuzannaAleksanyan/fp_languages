@@ -1,27 +1,43 @@
 .darkLightButton {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-    /* background-color: transparent; */
-    /* border: 1px solid #555; */
-    cursor: pointer;
-    /* transition: background-color 0.3s ease, border-color 0.3s ease; */
-  }
-  
-  .darkLightButton:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: white; 
-  }
-  
-  .darkLightButton:active {
-    background-color: rgba(255, 255, 255, 0.2);
-    border-color: #000000;
-  }
-  
-  .icon {
-    font-size: 24px;
-    color: #000000;
-  }
-  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 15px;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  position: relative; /* Necessary for positioning the tooltip */
+}
+
+.darkLightButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: white;
+}
+
+.darkLightButton:active {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: #000000;
+}
+
+.icon {
+  font-size: 24px;
+  color: #000000;
+}
+
+/* Tooltip styles */
+.tooltip {
+  position: absolute;
+  top: 60px; 
+  color: rgb(0, 0, 0);
+  padding: 5px 10px;
+  font-size: 10px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Show tooltip on hover */
+.darkLightButton:hover .tooltip {
+  opacity: 1;
+  transform: translateY(0);
+}

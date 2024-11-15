@@ -61,7 +61,8 @@ const Run = ({ onRun }) => {
   return (
     <button onClick={onRun} className={classes.runButton}>
       <FontAwesomeIcon icon={faPlay} style={{ marginRight: '5px' }} />
-      Run
+      <span className={classes.tooltip}>{"Run"}</span>
+      {/* Run */}
     </button>
   );
 };

@@ -1,69 +1,44 @@
-/* Run.module.css
-.runContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px;
-  margin-left: 20px;
-}
-
-.runContainer :hover {
-  background-color: #baedbc;
-}
-
-.runField {
-  border: 1px solid #61dafb;
-  color: rgb(19, 18, 18);
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  height: 70px;
-  width: 870px;
-  margin: 6px 6px;
-  cursor: pointer;
-  border-radius: 8px;
-  transition: background-color 0.3s ease;
-}
-
-.runField:hover {
-  background-color: #baedbc;
-}
-
-.runField:active {
-  background-color: #3e8e41;
-  transform: scale(0.98);
-} */
- 
-
 .runButton {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 10px 15px;
-  background-color: #28a745; /* Green color for Run button */
-  color: white;
+  color: rgb(0, 0, 0);
+  width: 50px;
+  height: 50px;
   font-size: 16px;
-  font-weight: bold;
-  border: none;
-  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 .runButton:hover {
-  background-color: #218838; /* Darker shade on hover */
-  transform: scale(1.05); /* Slightly enlarge on hover */
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: white;
 }
 
 .runButton:active {
-  background-color: #1e7e34; /* Even darker shade when pressed */
-  transform: scale(0.98); /* Slightly shrink when clicked */
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: #000000;
 }
 
 .icon {
-  margin-right: 8px; /* Space between icon and text */
-  font-size: 18px; /* Slightly larger icon */
+  font-size: 24px;
+  color: #000000;
+}
+
+/* Tooltip styles */
+.tooltip {
+  position: absolute;
+  top: 80px; 
+  color: rgb(0, 0, 0);
+  padding: 5px 10px;
+  font-size: 10px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Show tooltip on hover */
+.runButton:hover .tooltip {
+  opacity: 1;
+  transform: translateY(0);
 }

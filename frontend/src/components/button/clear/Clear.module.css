@@ -1,31 +1,43 @@
 .clearButton {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 15px;
-    background-color: #dc3545; /* Red color for Clear button */
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  }
-  
-  .clearButton:hover {
-    background-color: #c82333; /* Darker shade on hover */
-    transform: scale(1.05); /* Slightly enlarge on hover */
-  }
-  
-  .clearButton:active {
-    background-color: #bd2130; /* Even darker shade when pressed */
-    transform: scale(0.98); /* Slightly shrink when clicked */
-  }
-  
-  .icon {
-    margin-right: 8px; /* Space between icon and text */
-    font-size: 18px; /* Slightly larger icon */
-  }
-  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(0, 0, 0);
+  width: 50px;
+  height: 50px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.clearButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: white;
+}
+
+.clearButton:active {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: #000000;
+}
+
+.icon {
+  font-size: 24px;
+  color: #000000;
+}
+
+/* Tooltip styles */
+.tooltip {
+  position: absolute;
+  top: 80px; 
+  color: rgb(0, 0, 0);
+  padding: 5px 10px;
+  font-size: 10px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Show tooltip on hover */
+.clearButton:hover .tooltip {
+  opacity: 1;
+  transform: translateY(0);
+}
