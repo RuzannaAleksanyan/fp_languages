@@ -20,18 +20,19 @@ def run_bekus_fp(user_input):
         if right1 != right2:
             return "error: An invalid function is called!"
         
-        # if are_valid_arguments(rows[1]):
-        arguments = spliting_arguments(rows[1])
-        # print("arguments:")
-        # print(arguments)
-        # print(rows[0])
+        if rows[1] == "":
+            arguments = " "
+        else:
+            arguments = spliting_arguments(rows[1])
+        
+        if arguments == "error: The function is not called with the correct arguments":
+            return arguments
+
         return parse(rows[0], arguments)
-        # else:
-        #     return "error: Function is called with wrong arguments"
 
     return "error: Input format is incorrect."
 
-
+# mshakel naev nerdrvac listi depqy
 def spliting_arguments(input_string):
     # Split the string by spaces
     words = input_string.split(' ')
@@ -40,14 +41,14 @@ def spliting_arguments(input_string):
     for word in words:
         if word.isdigit():
             filtered_array.append(int(word))
-        elif word.lower() == 'none': 
+        elif word.lower() == 'nil': 
             filtered_array.append(None)
         elif word.lower() == 'true':
             filtered_array.append(True)
         elif word.lower() == 'false':
             filtered_array.append(False)
         else:
-            return "error: The function is not called with the correct arguments"  # 
+            return "error: The function is not called with the correct arguments"  
 
     return filtered_array
 
@@ -59,9 +60,7 @@ def parse(function, callable_argument):
     else:
         func = function
         arg = ""
-    print("1")
-    print(func)
-    print(arg)
+
     if arg != "":   
         if arg.startswith('(') and arg.endswith(')'):
             # Remove the first and last characters (the parentheses)
@@ -76,10 +75,25 @@ def function_validation(func, callable_argument, arg = ""):
     if arg == "":
         if func == "id":
             return id(callable_argument)
-    # print(func)
-    # print(callable_argument)
-    # print(arg)
 
+        if func == "eq":
+            return eq(callable_argument)
+
+        if func == "null":
+            return null(callable_argument)
+        
+        if func == "+":
+            return add(callable_argument)
+        
+        if func == "-":
+            return sub(callable_argument)
+        
+        if func == "*":
+            return mul(callable_argument)
+        
+        if func == "not":
+            return nott(callable_argument)
+        
     # if func == "si":
     #     index = func[1:]
     #     if valid_index(index):
@@ -90,34 +104,21 @@ def function_validation(func, callable_argument, arg = ""):
     #     else:
     #         error = "non valid index"
     #         return error
-    
-    # if func == "eq":
-    #     # ???
-    #     # print("roz")
-    #     # print(eq(arguments))
-    #     return eq(arg)
     # if func == "tl":
     #     print("tl")
     # if func == "apndl":
     #     print("apndl")
     # if func == "apndr":
     #     print("apndr")
-    # if func == "null":
-    #     print("null")
+    
     # if func == "atom":
     #     print("atom")
-    # if func == "+":
-    #     print("+")
-    # if func == "-":
-    #     print("-")
-    # if func == "*":
-    #     print("*")
+    
+   
     # if func == "and":
     #     print("and")
     # if func == "or":
     #     print("or")
-    # if func == "not":
-    #     print("not")
     # if func == "comp":
     #     print("comp")
     # if func == "constr":
@@ -134,5 +135,77 @@ def function_validation(func, callable_argument, arg = ""):
     #     return "Non valid function!"
 
 
-def id(*arguments): 
+def id(arguments): 
     return arguments
+
+def eq(arguments):
+    print(arguments)
+    if len(arguments) != 2:
+        return "error: Incorrect number of arguments passed to the eq function count"
+    
+    if arguments[0] == arguments[1]:
+        return "True"
+    else:
+        return "False"
+
+# kisat
+def null(arguments):
+    # (nil nil nil) depqum petq e return true
+    # return true <= datarki depqum
+    print("blabla", arguments)
+    if len(arguments) != 0:
+        return "False"
+    
+    if arguments[0] == None or len(arguments) == 0:
+        return "True"
+
+
+def add(arguments):
+    if len(arguments) != 2:
+        return "error: The + function was passed the wrong number of arguments."
+    
+    if arguments[0] is None or arguments[1] is None or arguments[0] is False or arguments[1] is False or arguments[0] is True or arguments[1] is True:
+        return "error: One of the arguments is equal to nil (None)."
+
+    if not isinstance(arguments[0], (int, float)) or not isinstance(arguments[1], (int, float)):
+        return "error: The arguments to + must be numbers."
+    
+    return arguments[0] + arguments[1]
+
+
+def sub(arguments):
+    if len(arguments) != 2:
+        return "error: The + function was passed the wrong number of arguments."
+    
+    if arguments[0] is None or arguments[1] is None or arguments[0] is False or arguments[1] is False or arguments[0] is True or arguments[1] is True:
+        return "error: One of the arguments is equal to nil (None)."
+
+    if not isinstance(arguments[0], (int, float)) or not isinstance(arguments[1], (int, float)):
+        return "error: The arguments to - must be numbers."
+    
+    return arguments[0] - arguments[1]
+
+
+def mul(arguments):
+    if len(arguments) != 2:
+        return "error: The + function was passed the wrong number of arguments."
+    
+    if arguments[0] is None or arguments[1] is None or arguments[0] is False or arguments[1] is False or arguments[0] is True or arguments[1] is True:
+        return "error: One of the arguments is equal to nil (None)."
+
+    if not isinstance(arguments[0], (int, float)) or not isinstance(arguments[1], (int, float)):
+        return "error: The arguments to * must be numbers."
+    
+    return arguments[0] * arguments[1]
+
+
+def nott(argument):
+    print(argument)
+    if len(argument) != 1:
+        return "error: Invalid count argument."
+    if argument is True:
+        return False
+    elif argument is False:
+        return True
+    else:
+        return "error: Invalid argument."
