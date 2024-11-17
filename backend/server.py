@@ -9,7 +9,9 @@ CORS(app)
 def receive_input():
     data = request.get_json()
     user_input = data.get('userInput')
+    # stugel db-um ka nor kanchel functiony
     output = run_bekus_fp(user_input)
+    # output-y grel db-um nor uxarkel front
     print(f"Received input: {user_input}")
     print(f"Output: {output}")
     

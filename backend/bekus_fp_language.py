@@ -79,8 +79,8 @@ def function_validation(func, callable_argument, arg = ""):
         if func == "eq":
             return eq(callable_argument)
 
-        if func == "null":
-            return null(callable_argument)
+        # if func == "null":
+        #     return null(callable_argument)
         
         if func == "+":
             return add(callable_argument)
@@ -93,17 +93,15 @@ def function_validation(func, callable_argument, arg = ""):
         
         if func == "not":
             return nott(callable_argument)
+
+        if func == "and":
+            return andd(callable_argument)
+
+        if func == "or":
+            return orr(callable_argument)
         
-    # if func == "si":
-    #     index = func[1:]
-    #     if valid_index(index):
-    #         # index cast to int
-    #         print("roz")
-    #         print(arg)
-    #         return si(index, arg)
-    #     else:
-    #         error = "non valid index"
-    #         return error
+        if func[0] == "s":
+            return si(func[1:], callable_argument)
     # if func == "tl":
     #     print("tl")
     # if func == "apndl":
@@ -114,9 +112,6 @@ def function_validation(func, callable_argument, arg = ""):
     # if func == "atom":
     #     print("atom")
     
-   
-    # if func == "and":
-    #     print("and")
     # if func == "or":
     #     print("or")
     # if func == "comp":
@@ -148,16 +143,16 @@ def eq(arguments):
     else:
         return "False"
 
-# kisat
-def null(arguments):
-    # (nil nil nil) depqum petq e return true
-    # return true <= datarki depqum
-    print("blabla", arguments)
-    if len(arguments) != 0:
-        return "False"
+# # kisat
+# def null(arguments):
+#     # (nil nil nil) depqum petq e return true
+#     # return true <= datarki depqum
+#     print("blabla", arguments)
+#     if len(arguments) != 0:
+#         return "False"
     
-    if arguments[0] == None or len(arguments) == 0:
-        return "True"
+#     if arguments[0] == None or len(arguments) == 0:
+#         return "True"
 
 
 def add(arguments):
@@ -172,7 +167,6 @@ def add(arguments):
     
     return arguments[0] + arguments[1]
 
-
 def sub(arguments):
     if len(arguments) != 2:
         return "error: The + function was passed the wrong number of arguments."
@@ -184,7 +178,6 @@ def sub(arguments):
         return "error: The arguments to - must be numbers."
     
     return arguments[0] - arguments[1]
-
 
 def mul(arguments):
     if len(arguments) != 2:
@@ -198,9 +191,7 @@ def mul(arguments):
     
     return arguments[0] * arguments[1]
 
-
 def nott(argument):
-    print(argument)
     if len(argument) != 1:
         return "error: Invalid count argument."
     if argument is True:
@@ -209,3 +200,34 @@ def nott(argument):
         return True
     else:
         return "error: Invalid argument."
+
+def andd(arguments):
+    if len(arguments) != 2:
+        return "error: The function was passed the wrong number of arguments."
+    
+    if not isinstance(arguments[0], bool) or not isinstance(arguments[1], bool):
+        return "error: Both arguments must be boolean values (True or False)."
+    
+    return arguments[0] and arguments[1]
+
+def orr(arguments):
+    if len(arguments) != 2:
+        return "error: The function was passed the wrong number of arguments."
+    
+    if not isinstance(arguments[0], bool) or not isinstance(arguments[1], bool):
+        return "error: Both arguments must be boolean values (True or False)."
+    
+    return arguments[0] or arguments[1]
+
+def si(index, arguments):
+    if index != "":
+        index = int(index)
+
+        if index > 0 and index <= len(arguments):
+            return arguments[index - 1]
+        
+        return "error: The transferred index is out of bounds․"
+    else:
+        return "error: No index was passed to the function."
+
+        
