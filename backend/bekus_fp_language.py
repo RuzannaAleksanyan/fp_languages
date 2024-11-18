@@ -70,7 +70,6 @@ def parse(function, callable_argument):
     
     return function_validation(func, callable_argument, arg)
    
-
 def function_validation(func, callable_argument, arg = ""):
     if arg == "":
         if func == "id":
@@ -113,7 +112,6 @@ def function_validation(func, callable_argument, arg = ""):
     #     print("apndr")
     # if func == "atom":
     #     print("atom")
-
     # if func == "comp":
     #     print("comp")
     # if func == "constr":
@@ -122,8 +120,6 @@ def function_validation(func, callable_argument, arg = ""):
     #     print("const")
     # if func == "cond":
     #     print("cond")
-    # else:
-    #     return "Non valid function!"
 
 
 def id(arguments): 

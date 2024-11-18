@@ -8,7 +8,7 @@ import Clear from './components/button/clear/Clear';
 
 function App() {
   const [value, setValue] = useState('');
-  const [result, setResult] = useState(''); // State for the output
+  const [result, setResult] = useState('');
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   // Load the dark mode preference from localStorage
@@ -18,6 +18,15 @@ function App() {
       setIsDarkMode(JSON.parse(storedMode));
     }
   }, []);
+
+  // Apply dark mode class to the body
+  useEffect(() => {
+    if (isDarkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+  }, [isDarkMode]);
 
   // Function to toggle dark mode
   const toggleDarkMode = () => {
@@ -39,7 +48,7 @@ function App() {
         body: JSON.stringify({ userInput: value }),
       });
       const data = await response.json();
-      setResult(data.output); // Set the output result
+      setResult(data.output);
     } catch (error) {
       console.error('Error:', error);
       setResult('Error processing request');
@@ -50,7 +59,6 @@ function App() {
     <div
       className="App"
       style={{
-        backgroundColor: isDarkMode ? 'black' : 'white',
         color: isDarkMode ? 'white' : 'black',
         height: '90vh',
         display: 'flex',
@@ -68,7 +76,7 @@ function App() {
         }}
       >
         <DarkLight toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
-        <Run onRun={handleRun} /> {/* Pass handleRun to Run */}
+        <Run onRun={handleRun} />
         <Clear value={value} setValue={setValue} />
       </div>
 
@@ -78,7 +86,7 @@ function App() {
           display: 'flex',
           flex: 1,
           flexDirection: 'row',
-          height: 'calc(100vh - 80px)', 
+          height: 'calc(100vh - 80px)',
         }}
       >
         <div
@@ -97,7 +105,7 @@ function App() {
             height: '100%',
           }}
         >
-          <Output result={result} /> {/* Pass result to Output */}
+          <Output result={result} />
         </div>
       </div>
     </div>

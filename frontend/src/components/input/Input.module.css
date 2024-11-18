@@ -1,6 +1,8 @@
 .inputContainer {
   width: 98%;
   height: 100%;
+
+  /* color: rgb(12, 88, 63); */
 }
 
 .inputField {
@@ -9,5 +11,9 @@
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  resize: none; /* Prevent resizing */
+  resize: none;
+
+  font-size: 30px;
 }
+
+
