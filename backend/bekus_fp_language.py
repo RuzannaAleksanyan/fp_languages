@@ -79,8 +79,8 @@ def function_validation(func, callable_argument, arg = ""):
         if func == "eq":
             return eq(callable_argument)
 
-        # if func == "null":
-        #     return null(callable_argument)
+        if func == "null":
+            return null(callable_argument)
         
         if func == "+":
             return add(callable_argument)
@@ -102,18 +102,18 @@ def function_validation(func, callable_argument, arg = ""):
         
         if func[0] == "s":
             return si(func[1:], callable_argument)
-    # if func == "tl":
-    #     print("tl")
+
+        if func == "tl":
+            return tl(callable_argument)
+   
+   
     # if func == "apndl":
     #     print("apndl")
     # if func == "apndr":
     #     print("apndr")
-    
     # if func == "atom":
     #     print("atom")
-    
-    # if func == "or":
-    #     print("or")
+
     # if func == "comp":
     #     print("comp")
     # if func == "constr":
@@ -122,10 +122,6 @@ def function_validation(func, callable_argument, arg = ""):
     #     print("const")
     # if func == "cond":
     #     print("cond")
-    # if func == "atom":
-    #     print("atom")
-    # if func == "eq":
-    #     print("eq")
     # else:
     #     return "Non valid function!"
 
@@ -143,16 +139,11 @@ def eq(arguments):
     else:
         return "False"
 
-# # kisat
-# def null(arguments):
-#     # (nil nil nil) depqum petq e return true
-#     # return true <= datarki depqum
-#     print("blabla", arguments)
-#     if len(arguments) != 0:
-#         return "False"
+def null(arguments):
+    if len(arguments) == 1 and arguments[0] == ' ': 
+        return True
     
-#     if arguments[0] == None or len(arguments) == 0:
-#         return "True"
+    return all(x is None for x in arguments) if arguments else True
 
 
 def add(arguments):
@@ -230,4 +221,9 @@ def si(index, arguments):
     else:
         return "error: No index was passed to the function."
 
-        
+def tl(arguments):
+    if len(arguments) == 1 and arguments[0] != ' ':
+        return "None"
+    elif len(arguments) > 1:
+        return arguments[1:]
+    return "error: N"   
