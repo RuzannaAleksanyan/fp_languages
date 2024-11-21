@@ -1,3 +1,5 @@
+from functions import *
+
 def run_bekus_fp(user_input):
     rows = user_input.splitlines()
     # Clear empty lines
@@ -112,6 +114,7 @@ def parse(function, callable_argument):
     return function_validation(func, callable_argument, arg)
 
 def function_validation(func, callable_argument, arg=""):
+    # print(arg)
     if not arg:
         if func == "id":
             return id(callable_argument)
@@ -135,78 +138,21 @@ def function_validation(func, callable_argument, arg=""):
             return si(func[1:], callable_argument)
         if func == "tl":
             return tl(callable_argument)
-        
-    # else:
+    else:
     # apndl and apndr
-    #     if arg == "2":
-    #         print(arg)
+        # try:
+        arg = int(arg)
+        # except ValueError:
+        #     return "error: arg must be an integer."
+
+        if isinstance(arg, int) and (func == "apndl" or func == "apndr"):
+            if func == "apndl":
+                return apndl(arg, callable_argument)
+            elif func == "apndr":
+                return apndr(arg, callable_argument)
+        else:
+            return "2"
+
 
     return "error: Unsupported function or incorrect arguments."
 
-def id(arguments):
-    return arguments
-
-def eq(arguments):
-    if len(arguments) != 2:
-        return "error: Incorrect number of arguments passed to the eq function."
-    return "True" if arguments[0] == arguments[1] else "False"
-
-def null(arguments):
-    if len(arguments) == 1 and arguments[0] == ' ':
-        return True
-    return all(x is None for x in arguments) if arguments else True
-
-def add(arguments):
-    if len(arguments) != 2:
-        return "error: The + function was passed the wrong number of arguments."
-    if None in arguments or True in arguments or False in arguments:
-        return "error: One of the arguments is invalid."
-    if not all(isinstance(x, (int, float)) for x in arguments):
-        return "error: The arguments to + must be numbers."
-    return arguments[0] + arguments[1]
-
-def sub(arguments):
-    if len(arguments) != 2:
-        return "error: The - function was passed the wrong number of arguments."
-    if None in arguments or True in arguments or False in arguments:
-        return "error: One of the arguments is invalid."
-    if not all(isinstance(x, (int, float)) for x in arguments):
-        return "error: The arguments to - must be numbers."
-    return arguments[0] - arguments[1]
-
-def mul(arguments):
-    if len(arguments) != 2:
-        return "error: The * function was passed the wrong number of arguments."
-    if None in arguments or True in arguments or False in arguments:
-        return "error: One of the arguments is invalid."
-    if not all(isinstance(x, (int, float)) for x in arguments):
-        return "error: The arguments to * must be numbers."
-    return arguments[0] * arguments[1]
-
-def nott(argument):
-    if len(argument) != 1:
-        return "error: Invalid number of arguments."
-    return not argument[0] if isinstance(argument[0], bool) else "error: Invalid argument."
-
-def andd(arguments):
-    if len(arguments) != 2:
-        return "error: The function was passed the wrong number of arguments."
-    if not all(isinstance(x, bool) for x in arguments):
-        return "error: Both arguments must be boolean values (True or False)."
-    return arguments[0] and arguments[1]
-
-def orr(arguments):
-    if len(arguments) != 2:
-        return "error: The function was passed the wrong number of arguments."
-    if not all(isinstance(x, bool) for x in arguments):
-        return "error: Both arguments must be boolean values (True or False)."
-    return arguments[0] or arguments[1]
-
-def si(index, arguments):
-    if not index.isdigit():
-        return "error: Invalid index format."
-    index = int(index)
-    return arguments[index - 1] if 0 < index <= len(arguments) else "error: Index out of bounds."
-
-def tl(arguments):
-    return arguments[1:] if len(arguments) > 1 else "None"
