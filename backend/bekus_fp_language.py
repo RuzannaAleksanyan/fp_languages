@@ -1,5 +1,7 @@
 from functions import *
 
+from validation import splitting_arguments
+
 def run_bekus_fp(user_input):
     rows = user_input.splitlines()
     # Clear empty lines
@@ -33,68 +35,6 @@ def run_bekus_fp(user_input):
         return parse(rows[0], arguments)
 
     return "error: Input format is incorrect."
-
-def parse_expression(input_string):
-    input_string = input_string.strip()
-    tokens = []
-    balance = 0
-    current_token = []
-
-    for char in input_string:
-        if char == '(':
-            balance += 1
-            current_token.append(char)
-        elif char == ')':
-            balance -= 1
-            if balance < 0:  # Unmatched closing parenthesis
-                return "error: Unmatched closing parenthesis."
-            current_token.append(char)
-            if balance == 0:
-                tokens.append(''.join(current_token).strip())
-                current_token = []
-        elif char == ' ' and balance == 0:
-            if current_token:
-                tokens.append(''.join(current_token).strip())
-                current_token = []
-        else:
-            current_token.append(char)
-
-    # Add any remaining token
-    if current_token:
-        tokens.append(''.join(current_token).strip())
-
-    if balance != 0:
-        return "error: Unmatched opening parenthesis."
-
-    return tokens
-
-# nerdrvac listi pakagcery dnel
-def splitting_arguments(input_string):
-    words = parse_expression(input_string)
-    if isinstance(words, str) and words.startswith("error"):
-        return words  # Return error if parse_expression fails
-
-    filtered_array = []
-
-    for word in words:
-        if word.startswith("(") and word.endswith(")"):
-            # Recursively handle nested expressions
-            nested_result = splitting_arguments(word[1:-1])  # Strip parentheses before recursion
-            if isinstance(nested_result, str) and nested_result.startswith("error"):
-                return nested_result  # Propagate error upwards
-            filtered_array.append(nested_result)
-        elif word.isdigit():
-            filtered_array.append(int(word))
-        elif word.lower() == "nil":
-            filtered_array.append(None)
-        elif word.lower() == "true":
-            filtered_array.append(True)
-        elif word.lower() == "false":
-            filtered_array.append(False)
-        else:
-            return "error: The function is not called with the correct arguments"
-
-    return filtered_array
 
 def parse(function, callable_argument):
     paren_index = function.find('(')
@@ -138,6 +78,8 @@ def function_validation(func, callable_argument, arg=""):
             return si(func[1:], callable_argument)
         if func == "tl":
             return tl(callable_argument)
+        if func == "atom":
+            return atom(callable_argument)
     else:
     # apndl and apndr
         # try:
