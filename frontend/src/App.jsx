@@ -76,8 +76,8 @@ function App() {
         }}
       >
         <DarkLight toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
-        <Run onRun={handleRun} />
-        <Clear value={value} setValue={setValue} />
+        <Run onRun={handleRun} isDarkMode={isDarkMode} />
+        <Clear value={value} setValue={setValue} isDarkMode={isDarkMode} />
       </div>
 
       {/* Main container with two columns */}

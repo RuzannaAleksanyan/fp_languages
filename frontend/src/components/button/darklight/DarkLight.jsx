@@ -5,11 +5,16 @@ import classes from './DarkLight.module.css';
 
 const DarkLight = ({ toggleDarkMode, isDarkMode }) => {
   return (
-    <button onClick={toggleDarkMode} className={classes.darkLightButton}>
-      <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} className={classes.icon} />
-      <span className={classes.tooltip}>{isDarkMode ? "Light Mode" : "Dark Mode"}</span>
+    <button
+      onClick={toggleDarkMode}
+      className={`${classes.darkLightButton} ${isDarkMode ? classes.dark : classes.light}`}
+    >
+      <FontAwesomeIcon
+        icon={isDarkMode ? faSun : faMoon}
+        className={`${classes.icon} ${isDarkMode ? classes.dark : classes.light}`}
+      />
+      <span className={classes.tooltip}>{isDarkMode ? 'Light Mode' : 'Dark Mode'}</span>
     </button>
-
   );
 };
 

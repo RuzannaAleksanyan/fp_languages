@@ -2,7 +2,7 @@
   width: 98%;
   height: 100%;
 
-  /* color: rgb(12, 88, 63); */
+  /* color: rgb(18, 241, 166); */
 }
 
 .inputField {
@@ -14,6 +14,8 @@
   resize: none;
 
   font-size: 25px;
+
+  background-color: #f4f4f4;
 }
 
 
