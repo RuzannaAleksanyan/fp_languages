@@ -24,15 +24,15 @@ def receive_input():
         # Check if the value exists in MongoDB
         existing_record = collection.find_one({'userInput': user_input})
 
-        if existing_record:
-            output = existing_record.get('output', 'No output found')
-            print(f"Found in database: {existing_record}")
-        else:
-            output = run_bekus_fp(user_input)
-            print(f"Generated output: {output}")
+        # if existing_record:
+        #     output = existing_record.get('output', 'No output found')
+        #     print(f"Found in database: {existing_record}")
+        # else:
+        output = run_bekus_fp(user_input)
+            # print(f"Generated output: {output}")
 
-            collection.insert_one({'userInput': user_input, 'output': output})
-            print("Stored in database.")
+            # collection.insert_one({'userInput': user_input, 'output': output})
+            # print("Stored in database.")
 
         print(f"Received input: {user_input}")
         print(f"Output: {output}")

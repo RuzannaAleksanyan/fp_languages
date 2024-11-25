@@ -54,7 +54,6 @@ def parse(function, callable_argument):
     return function_validation(func, callable_argument, arg)
 
 def function_validation(func, callable_argument, arg=""):
-    # print(arg)
     if not arg:
         if func == "id":
             return id(callable_argument)
@@ -81,19 +80,19 @@ def function_validation(func, callable_argument, arg=""):
         if func == "atom":
             return atom(callable_argument)
     else:
-    # apndl and apndr
-        # try:
-        arg = int(arg)
-        # except ValueError:
-        #     return "error: arg must be an integer."
+        try:
+            arg = int(arg)
+        except ValueError:
+            print(arg)
+            return "4"
+            # return "error: The argument must be an integer for this function."
 
-        if isinstance(arg, int) and (func == "apndl" or func == "apndr"):
-            if func == "apndl":
-                return apndl(arg, callable_argument)
-            elif func == "apndr":
-                return apndr(arg, callable_argument)
+        if func == "apndl":
+            return apndl(arg, callable_argument)
+        elif func == "apndr":
+            return apndr(arg, callable_argument)
         else:
-            return "2"
+            return "error: Unsupported function or incorrect arguments."
 
 
     return "error: Unsupported function or incorrect arguments."
