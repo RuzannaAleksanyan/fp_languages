@@ -13,7 +13,7 @@ const Run = ({ onRun, isDarkMode }) => {
         icon={faPlay}
         className={`${classes.icon} ${isDarkMode ? classes.dark : classes.light}`}
       />
-      <span className={`${classes.tooltip} ${isDarkMode ? classes.dark : ''}`}>Run</span>
+      {/* <span className={`${classes.tooltip} ${isDarkMode ? classes.dark : ''}`}>Run</span> */}
     </button>
   );
 };

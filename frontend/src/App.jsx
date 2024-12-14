@@ -56,55 +56,22 @@ function App() {
   };
 
   return (
-    <div
-      className="App"
-      style={{
-        color: isDarkMode ? 'white' : 'black',
-        height: '90vh',
-        display: 'flex',
-        flexDirection: 'column',
-        transition: 'background-color 0.3s ease',
-      }}
-    >
-      {/* Top Controls */}
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          padding: '10px',
-          height: '80px',
-        }}
-      >
+    <div className="App" >
+      <div className='buttons' >
+        <div class="logo-container">
+          <img src={require('./logo.png')} alt="Logo" />
+        </div>
+
         <DarkLight toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
         <Run onRun={handleRun} isDarkMode={isDarkMode} />
         <Clear value={value} setValue={setValue} isDarkMode={isDarkMode} />
-      </div>
+      </div>      
 
-      {/* Main container with two columns */}
-      <div
-        style={{
-          display: 'flex',
-          flex: 1,
-          flexDirection: 'row',
-          height: 'calc(100vh - 80px)',
-        }}
-      >
-        <div
-          style={{
-            flex: 1,
-            padding: '10px',
-            height: '100%',
-          }}
-        >
+      <div className='stream' >
+        <div>
           <Input value={value} setValue={setValue} />
         </div>
-        <div
-          style={{
-            flex: 1,
-            padding: '10px',
-            height: '100%',
-          }}
-        >
+        <div>
           <Output result={result} />
         </div>
       </div>
