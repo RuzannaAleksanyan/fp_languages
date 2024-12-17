@@ -50,42 +50,62 @@ def parse(function, callable_argument):
             arg = arg[1:-1].strip()
         else:
             return "error: The parentheses ( or ) are not placed correctly."
-
+    print("hello1")
+    print(func, callable_argument, arg)
     return function_validation(func, callable_argument, arg)
+
+def function_check(func, callable_argument):
+    if func == "id":
+        return id(callable_argument)
+    if func == "eq":
+        return eq(callable_argument)
+    if func == "null":
+        return null(callable_argument)
+    if func == "+":
+        return add(callable_argument)
+    if func == "-":
+        return sub(callable_argument)
+    if func == "*":
+        return mul(callable_argument)
+    if func == "not":
+        return nott(callable_argument)
+    if func == "and":
+        return andd(callable_argument)
+    if func == "or":
+        return orr(callable_argument)
+    if func[0] == "s":
+        return si(func[1:], callable_argument)
+    if func == "tl":
+        return tl(callable_argument)
+    if func == "atom":
+        return atom(callable_argument)
+
+# sharunakel rekursian erb mi qn=ani funkcia 1 irar mej kanchvum
+def parse2(argument, call_arg):
+    print("esimte")
+    func, arg = argument.split(',', 1)
+    print(func)
+    print(arg)
+    return "esimte"
 
 def function_validation(func, callable_argument, arg=""):
     if not arg:
-        if func == "id":
-            return id(callable_argument)
-        if func == "eq":
-            return eq(callable_argument)
-        if func == "null":
-            return null(callable_argument)
-        if func == "+":
-            return add(callable_argument)
-        if func == "-":
-            return sub(callable_argument)
-        if func == "*":
-            return mul(callable_argument)
-        if func == "not":
-            return nott(callable_argument)
-        if func == "and":
-            return andd(callable_argument)
-        if func == "or":
-            return orr(callable_argument)
-        if func[0] == "s":
-            return si(func[1:], callable_argument)
-        if func == "tl":
-            return tl(callable_argument)
-        if func == "atom":
-            return atom(callable_argument)
+        return function_check(func, callable_argument)
     else:
         try:
             arg = int(arg)
         except ValueError:
-            print(arg)
-            return "4"
-            # return "error: The argument must be an integer for this function."
+            arg = parse2(arg, callable_argument)
+            # print("hello4")
+            # print(arg)
+        if(len(arg) >= 2):
+            # apndl apndr ֆունկցիաները ստանան 1 արգումենտ են կցում callable_argument֊ին
+            return "444"
+        # else :
+        #     # ???
+        #     return "esimte"
+        #     # res = function_check(x, callable_argument=callable_argument)
+
 
         if func == "apndl":
             return apndl(arg, callable_argument)
@@ -95,5 +115,5 @@ def function_validation(func, callable_argument, arg=""):
             return "error: Unsupported function or incorrect arguments."
 
 
-    return "error: Unsupported function or incorrect arguments."
+    # return "error: Unsupported function or incorrect arguments."
 

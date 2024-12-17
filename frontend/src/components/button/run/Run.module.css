@@ -1,11 +1,6 @@
 .runButton {
-  /* display: flex; */
-  /* align-items: center; */
-  /* justify-content: center; */
-  /* padding: 10px 15px; */
   width: 80px;
   height: 80px;
-  /* font-size: 16px; */
   cursor: pointer;
   border-radius: 5px;
   border: none;
@@ -15,16 +10,14 @@
   left: 85vh; 
 }
 
-/* Light mode */
 .light {
   background-color: rgb(225, 232, 238);
   color: #2f2f2f;
 }
 
-/* Dark mode */
 .dark {
-  background-color: #2f2f2f;
-  color: white;
+  background-color: #9b9fe2;
+  /* color: white; */
 }
 
 .icon {
@@ -37,14 +30,12 @@
 /* Tooltip styles */
 .tooltip {
   position: absolute;
-  /* top: 60px; */
   color: black;
   padding: 5px 10px;
   font-size: 10px;
   white-space: nowrap;
   opacity: 0;
   pointer-events: none;
-  /* background-color: white; */
   border-radius: 3px;
 }
 

@@ -57,7 +57,7 @@ function App() {
 
   return (
     <div className="App" >
-      <div className='buttons' >
+      <div className={`buttons ${isDarkMode ? 'dark' : 'light'}`}>
         <div class="logo-container">
           <img src={require('./logo.png')} alt="Logo" />
         </div>
@@ -67,7 +67,7 @@ function App() {
         <Clear value={value} setValue={setValue} isDarkMode={isDarkMode} />
       </div>      
 
-      <div className='stream' >
+      <div className={`stream ${isDarkMode ? 'dark' : 'light'}`} >
         <div>
           <Input value={value} setValue={setValue} />
         </div>

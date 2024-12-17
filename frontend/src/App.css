@@ -1,6 +1,6 @@
 
 body.dark-mode {
-  background-color: #2f2f2f;
+  background-color: #4b4848;
   color: white;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -23,6 +23,15 @@ body {
   display: flex;
 }
 
+.buttons.light {
+  background-color: rgb(225, 232, 238);
+}
+
+.buttons.dark {
+  background-color: #9b9fe2;
+  color: white;
+}
+
 .stream {
   background-color: rgb(225, 232, 238);
   height: 100vh;
@@ -31,23 +40,28 @@ body {
   display: flex;
 }
 
-/* App.css */
+.stream.light {
+  background-color: rgb(225, 232, 238); 
+}
+
+.stream.dark {
+  background-color: #9b9fe2;
+  color: white;
+}
+
 .logo-container {
   display: flex;
   justify-content: center; 
   align-items: center;    
-  /* margin-right: auto;      */
   width: 90px;     
   height: 90px;
 
-  /* background-color: red; */
   cursor: pointer;
   position: relative; 
   border-radius: 5px;
   border: none;
   transition: background-color 0.3s ease, color 0.3s ease;
 
-  /* top: 10px; */
   left: 70px; 
 }
 
