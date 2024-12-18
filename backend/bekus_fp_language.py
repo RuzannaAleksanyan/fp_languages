@@ -54,33 +54,10 @@ def parse(function, callable_argument):
     print(func, callable_argument, arg)
     return function_validation(func, callable_argument, arg)
 
-def function_check(func, callable_argument):
-    if func == "id":
-        return id(callable_argument)
-    if func == "eq":
-        return eq(callable_argument)
-    if func == "null":
-        return null(callable_argument)
-    if func == "+":
-        return add(callable_argument)
-    if func == "-":
-        return sub(callable_argument)
-    if func == "*":
-        return mul(callable_argument)
-    if func == "not":
-        return nott(callable_argument)
-    if func == "and":
-        return andd(callable_argument)
-    if func == "or":
-        return orr(callable_argument)
-    if func[0] == "s":
-        return si(func[1:], callable_argument)
-    if func == "tl":
-        return tl(callable_argument)
-    if func == "atom":
-        return atom(callable_argument)
+
 
 # sharunakel rekursian erb mi qn=ani funkcia 1 irar mej kanchvum
+# piti skzbic ev verjic spaceery hanel
 def parse2(argument, call_arg):
     print("esimte")
     func, arg = argument.split(',', 1)
@@ -95,12 +72,16 @@ def function_validation(func, callable_argument, arg=""):
         try:
             arg = int(arg)
         except ValueError:
-            arg = parse2(arg, callable_argument)
+            if func == "comp":
+                return comp(arg, callable_argument)
+            if func == "cond":
+                return cond(arg, callable_argument)
+            # arg = parse2(arg, callable_argument)
             # print("hello4")
             # print(arg)
-        if(len(arg) >= 2):
-            # apndl apndr ֆունկցիաները ստանան 1 արգումենտ են կցում callable_argument֊ին
-            return "444"
+        # if(len(arg) >= 2):
+        #     # apndl apndr ֆունկցիաները ստանան 1 արգումենտ են կցում callable_argument֊ին
+        #     return "444"
         # else :
         #     # ???
         #     return "esimte"
@@ -117,3 +98,13 @@ def function_validation(func, callable_argument, arg=""):
 
     # return "error: Unsupported function or incorrect arguments."
 
+def cond(arg, call_args):
+    functions = [func.strip() for func in arg.split(",")]
+
+    if len(functions) > 3:
+        return "error"
+    
+    if parse(functions[0], call_args) == True:
+        return parse(functions[1], call_args)
+    else: 
+        return parse(functions[2], call_args)

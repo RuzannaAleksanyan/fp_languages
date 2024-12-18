@@ -1,4 +1,5 @@
 from validation import valid_argument
+# from bekus_fp_language import parse
 
 def id(arguments):
     if(valid_argument(arguments)):
@@ -101,7 +102,16 @@ def tl(arguments):
 
     return "error: Invalid arguments."
 
+def atom(arguments):
+    if(valid_argument(arguments)):
+        return True
+    
+    return False
+
 def apndl(arg, arguments):
+    # if len(arg) >= 2:
+    #     return "error"
+    
     if(valid_argument(arguments)):
         arguments.insert(0, arg)
         return arguments
@@ -109,14 +119,47 @@ def apndl(arg, arguments):
     return "error: Invalid arguments."
 
 def apndr(arg, arguments):
+    # if len(arg) >= 2:
+    #     return "error"
+    
     if(valid_argument(arguments)):
         arguments.append(arg)
         return arguments
 
     return "error: Invalid arguments."
 
-def atom(arguments):
-    if(valid_argument(arguments)):
-        return True
+def function_check(func, callable_argument):
+    if func == "id":
+        return id(callable_argument)
+    if func == "eq":
+        return eq(callable_argument)
+    if func == "null":
+        return null(callable_argument)
+    if func == "+":
+        return add(callable_argument)
+    if func == "-":
+        return sub(callable_argument)
+    if func == "*":
+        return mul(callable_argument)
+    if func == "not":
+        return nott(callable_argument)
+    if func == "and":
+        return andd(callable_argument)
+    if func == "or":
+        return orr(callable_argument)
+    if func[0] == "s":
+        return si(func[1:], callable_argument)
+    if func == "tl":
+        return tl(callable_argument)
+    if func == "atom":
+        return atom(callable_argument)
     
-    return False
+def comp(arg, call_args):
+    functions =  [func.strip() for func in arg.split(",")]
+    if len(functions) > 2:
+        return "error"
+
+    arguments = function_check(functions[0], call_args)
+
+    return function_check(functions[1], arguments)
+
