@@ -76,6 +76,8 @@ def function_validation(func, callable_argument, arg=""):
                 return comp(arg, callable_argument)
             if func == "cond":
                 return cond(arg, callable_argument)
+            if func == "constr":
+                return constr(arg, callable_argument)
             # arg = parse2(arg, callable_argument)
             # print("hello4")
             # print(arg)
@@ -92,6 +94,8 @@ def function_validation(func, callable_argument, arg=""):
             return apndl(arg, callable_argument)
         elif func == "apndr":
             return apndr(arg, callable_argument)
+        elif func == "const":
+            return const(arg, callable_argument)
         else:
             return "error: Unsupported function or incorrect arguments."
 

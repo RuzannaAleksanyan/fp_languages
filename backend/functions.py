@@ -159,7 +159,30 @@ def comp(arg, call_args):
     if len(functions) > 2:
         return "error"
 
+    # parse
     arguments = function_check(functions[0], call_args)
-
+    # parse
     return function_check(functions[1], arguments)
 
+def const(arg, call_args):
+    print("len: ", call_args)
+    if len(call_args) == 1 and call_args[0] == " ":
+        return "empty args list"
+    
+    if len(call_args) > 0:
+        return arg
+    
+    return "error"
+
+def constr(arg, call_args):
+    functions =  [func.strip() for func in arg.split(",")]
+
+    if len(functions) > 2:
+        return "error"
+    
+    # parse
+    arg1 = function_check(functions[0], call_args)
+    arg2 = function_check(functions[1], call_args)
+    result_array = [arg1, arg2]
+
+    return result_array
