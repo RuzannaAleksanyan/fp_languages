@@ -1,91 +1,4 @@
 from validation import valid_argument
-# from bekus_fp_language import parse
-
-def id(arguments):
-    if(valid_argument(arguments)):
-        return arguments
-    
-    return "error: Invalid arguments."
-
-def eq(arguments):
-    if(valid_argument(arguments)):
-        if len(arguments) != 2:
-            return "error: Incorrect number of arguments passed to the eq function."
-        return "True" if arguments[0] == arguments[1] else "False"
-    
-    return "error: Invalid arguments."
-
-def null(arguments):
-    if(valid_argument(arguments)):
-        if len(arguments) == 1 and arguments[0] == ' ':
-            return True
-        return all(x is None for x in arguments) if arguments else True
-    
-    return "error: Invalid arguments."
-
-def add(arguments):
-    if(valid_argument(arguments)):
-        if len(arguments) != 2:
-            return "error: The + function was passed the wrong number of arguments."
-        if None in arguments or True in arguments or False in arguments:
-            return "error: One of the arguments is invalid."
-        if not all(isinstance(x, (int, float)) for x in arguments):
-            return "error: The arguments to + must be numbers."
-        return arguments[0] + arguments[1]
-    
-    return "error: Invalid arguments."
-
-def sub(arguments):
-    if(valid_argument(arguments)):
-        if len(arguments) != 2:
-            return "error: The - function was passed the wrong number of arguments."
-        if None in arguments or True in arguments or False in arguments:
-            return "error: One of the arguments is invalid."
-        if not all(isinstance(x, (int, float)) for x in arguments):
-            return "error: The arguments to - must be numbers."
-        return arguments[0] - arguments[1]
-    
-    return "error: Invalid arguments."
-
-def mul(arguments):
-    if(valid_argument(arguments)):
-        if len(arguments) != 2:
-            return "error: The * function was passed the wrong number of arguments."
-        if None in arguments or True in arguments or False in arguments:
-            return "error: One of the arguments is invalid."
-        if not all(isinstance(x, (int, float)) for x in arguments):
-            return "error: The arguments to * must be numbers."
-        return arguments[0] * arguments[1]
-    
-    return "error: Invalid arguments."
-
-def nott(argument):
-    if(valid_argument(argument)):
-        if len(argument) != 1:
-            return "error: Invalid number of arguments."
-        return not argument[0] if isinstance(argument[0], bool) else "error: Invalid argument."
-
-    return "error: Invalid arguments."
-
-def andd(arguments):
-    if(valid_argument(arguments)):
-        if len(arguments) != 2:
-            return "error: The function was passed the wrong number of arguments."
-        if not all(isinstance(x, bool) for x in arguments):
-            return "error: Both arguments must be boolean values (True or False)."
-        return arguments[0] and arguments[1]
-    
-    return "error: Invalid arguments."
-
-def orr(arguments):
-    if(valid_argument(arguments)):
-        if len(arguments) != 2:
-            return "error: The function was passed the wrong number of arguments."
-        if not all(isinstance(x, bool) for x in arguments):
-            return "error: Both arguments must be boolean values (True or False)."
-        return arguments[0] or arguments[1]
-    
-    return "error: Invalid arguments."
 
 def si(index, arguments):
     if(valid_argument(arguments)):
@@ -96,11 +9,51 @@ def si(index, arguments):
 
     return "error: Invalid arguments."
 
-def tl(arguments):
-    if(valid_argument(arguments)):
-        return arguments[1:] if len(arguments) > 1 else "None"
+def id(arguments):
+    # if(valid_argument(arguments)):
+    return arguments
+    
+    # return "error: Invalid arguments."
 
-    return "error: Invalid arguments."
+def tl(arguments):
+    # if(valid_argument(arguments)):
+    return arguments[1:] if len(arguments) > 1 else "Nil"
+
+    # return "error: Invalid arguments."
+
+def apndl(arg, arguments):
+    # if len(arg) >= 2:
+    #     return "error"
+
+    if arguments[0] == " ":
+        return arg
+    
+    # if(valid_argument(arguments)):
+    arguments.insert(0, arg)
+    return arguments
+    
+    # return "error: Invalid arguments."
+
+def apndr(arg, arguments):
+    # if len(arg) >= 2:
+    #     return "error"
+    
+    if arguments[0] == " ":
+        return arg
+    
+    # if(valid_argument(arguments)):
+    arguments.append(arg)
+    return arguments
+
+    # return "error: Invalid arguments."
+
+def null(arguments):
+    # if(valid_argument(arguments)):
+    if len(arguments) == 1 and arguments[0] == ' ':
+        return True
+    return all(x is None for x in arguments) if arguments else True
+    
+    # return "error: Invalid arguments."
 
 def atom(arguments):
     if(valid_argument(arguments)):
@@ -108,25 +61,122 @@ def atom(arguments):
     
     return False
 
-def apndl(arg, arguments):
-    # if len(arg) >= 2:
-    #     return "error"
+def eq(arguments):
+    # if(valid_argument(arguments)):
+    if len(arguments) != 2:
+        return "error: Incorrect number of arguments passed to the eq function."
+    return "True" if arguments[0] == arguments[1] else "False"
     
-    if(valid_argument(arguments)):
-        arguments.insert(0, arg)
-        return arguments
-    
-    return "error: Invalid arguments."
+    # return "error: Invalid arguments."
 
-def apndr(arg, arguments):
-    # if len(arg) >= 2:
-    #     return "error"
+def add(arguments):
+    print("abc - ", arguments)
+    # if(valid_argument(arguments)):
+    if len(arguments) != 2:
+        return "error: The + function was passed the wrong number of arguments."
     
-    if(valid_argument(arguments)):
-        arguments.append(arg)
-        return arguments
+    invalid_values = {None, True, False}  
+    if any(arg in invalid_values for arg in arguments):
+        return "error: One of the arguments is invalid."
+    
+    if not all(isinstance(x, (int, float)) for x in arguments):
+        return "error: The arguments to + must be numbers."
+    
+    return arguments[0] + arguments[1]
+    
+    # return "error: Invalid arguments."
 
-    return "error: Invalid arguments."
+def sub(arguments):
+    # if(valid_argument(arguments)):
+    if len(arguments) != 2:
+        return "error: The - function was passed the wrong number of arguments."
+    
+    invalid_values = {None, True, False}  
+    if any(arg in invalid_values for arg in arguments):
+        return "error: One of the arguments is invalid."
+    
+    if not all(isinstance(x, (int, float)) for x in arguments):
+        return "error: The arguments to - must be numbers."
+    
+    return arguments[0] - arguments[1]
+    
+    # return "error: Invalid arguments."
+
+def mul(arguments):
+    # if(valid_argument(arguments)):
+    if len(arguments) != 2:
+        return "error: The * function was passed the wrong number of arguments."
+    
+    invalid_values = {None, True, False}  
+    if any(arg in invalid_values for arg in arguments):
+        return "error: One of the arguments is invalid."
+    
+    if not all(isinstance(x, (int, float)) for x in arguments):
+        return "error: The arguments to * must be numbers."
+    
+    return arguments[0] * arguments[1]
+    
+    # return "error: Invalid arguments."
+
+def andd(arguments):
+    # if(valid_argument(arguments)):
+    if len(arguments) != 2:
+        return "error: The function was passed the wrong number of arguments."
+    if not all(isinstance(x, bool) for x in arguments):
+        return "error: Both arguments must be boolean values (True or False)."
+    return arguments[0] and arguments[1]
+    
+    # return "error: Invalid arguments."
+
+def orr(arguments):
+    # if(valid_argument(arguments)):
+    if len(arguments) != 2:
+        return "error: The function was passed the wrong number of arguments."
+    if not all(isinstance(x, bool) for x in arguments):
+        return "error: Both arguments must be boolean values (True or False)."
+    return arguments[0] or arguments[1]
+    
+    # return "error: Invalid arguments."
+
+def nott(argument):
+    # if(valid_argument(argument)):
+    if len(argument) != 1:
+        return "error: Invalid number of arguments."
+    return not argument[0] if isinstance(argument[0], bool) else "error: Invalid argument."
+
+    # return "error: Invalid arguments."
+
+def comp(arg, call_args):
+    functions =  [func.strip() for func in arg.split(",")]
+    if len(functions) > 2:
+        return "error"
+
+    # parse
+    arguments = function_check(functions[1], call_args)
+    # parse
+    return function_check(functions[0], arguments)
+
+def constr(arg, call_args):
+    functions =  [func.strip() for func in arg.split(",")]
+
+    if len(functions) > 2:
+        return "error"
+    
+    # parse
+    arg1 = function_check(functions[0], call_args)
+    arg2 = function_check(functions[1], call_args)
+    result_array = [arg1, arg2]
+
+    return result_array
+
+def const(arg, call_args):
+    if len(call_args) == 1 and call_args[0] == " ":
+        return "empty args list"
+    
+    if len(call_args) > 0:
+        return arg
+    
+    return "error"
 
 def function_check(func, callable_argument):
     if func == "id":
@@ -153,36 +203,6 @@ def function_check(func, callable_argument):
         return tl(callable_argument)
     if func == "atom":
         return atom(callable_argument)
+    else:
+        "error"
     
-def comp(arg, call_args):
-    functions =  [func.strip() for func in arg.split(",")]
-    if len(functions) > 2:
-        return "error"
-
-    # parse
-    arguments = function_check(functions[0], call_args)
-    # parse
-    return function_check(functions[1], arguments)
-
-def const(arg, call_args):
-    print("len: ", call_args)
-    if len(call_args) == 1 and call_args[0] == " ":
-        return "empty args list"
-    
-    if len(call_args) > 0:
-        return arg
-    
-    return "error"
-
-def constr(arg, call_args):
-    functions =  [func.strip() for func in arg.split(",")]
-
-    if len(functions) > 2:
-        return "error"
-    
-    # parse
-    arg1 = function_check(functions[0], call_args)
-    arg2 = function_check(functions[1], call_args)
-    result_array = [arg1, arg2]
-
-    return result_array

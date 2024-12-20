@@ -54,8 +54,6 @@ def parse(function, callable_argument):
     print(func, callable_argument, arg)
     return function_validation(func, callable_argument, arg)
 
-
-
 # sharunakel rekursian erb mi qn=ani funkcia 1 irar mej kanchvum
 # piti skzbic ev verjic spaceery hanel
 def parse2(argument, call_arg):
@@ -67,6 +65,9 @@ def parse2(argument, call_arg):
 
 def function_validation(func, callable_argument, arg=""):
     if not arg:
+        if func == "const":
+            return "error"
+        
         return function_check(func, callable_argument)
     else:
         try:
@@ -82,13 +83,11 @@ def function_validation(func, callable_argument, arg=""):
             # print("hello4")
             # print(arg)
         # if(len(arg) >= 2):
-        #     # apndl apndr ֆունկցիաները ստանան 1 արգումենտ են կցում callable_argument֊ին
         #     return "444"
         # else :
         #     # ???
         #     return "esimte"
         #     # res = function_check(x, callable_argument=callable_argument)
-
 
         if func == "apndl":
             return apndl(arg, callable_argument)
@@ -99,7 +98,6 @@ def function_validation(func, callable_argument, arg=""):
         else:
             return "error: Unsupported function or incorrect arguments."
 
-
     # return "error: Unsupported function or incorrect arguments."
 
 def cond(arg, call_args):
@@ -107,8 +105,8 @@ def cond(arg, call_args):
 
     if len(functions) > 3:
         return "error"
-    
-    if parse(functions[0], call_args) == True:
+    print("abc - ", parse(functions[0], call_args))
+    if parse(functions[0], call_args) == "True":
         return parse(functions[1], call_args)
     else: 
         return parse(functions[2], call_args)

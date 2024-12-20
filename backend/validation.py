@@ -62,14 +62,10 @@ def parse_expression(input_string):
 
 
 def valid_argument(arguments):
-    # Define a helper function to check a single value
     def is_valid(value):
-        return isinstance(value, (int, float)) or value in {True, False}
+        return isinstance(value, (int, float)) or value in {True, False, None}
 
-    # Check if arguments is a list or a single element
     if isinstance(arguments, list):
-        # Validate each element in the list
         return all(is_valid(arg) for arg in arguments)
     else:
-        # Validate the single argument
         return is_valid(arguments)
