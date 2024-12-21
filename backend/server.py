@@ -29,6 +29,8 @@ def receive_input():
         #     print(f"Found in database: {existing_record}")
         # else:
         output = run_bekus_fp(user_input)
+        output = (str(output).replace('[', '(').replace(']', ')')).replace(',', '')
+
             # print(f"Generated output: {output}")
 
             # collection.insert_one({'userInput': user_input, 'output': output})
@@ -45,6 +47,6 @@ def receive_input():
         return jsonify({'error': 'An unexpected error occurred'}), 500
 
 if __name__ == '__main__':
-    app.run(port=3001
+    app.run(port=5000
             
-            )  # Run the server on port 3001
+            )  # Run the server on port 5000

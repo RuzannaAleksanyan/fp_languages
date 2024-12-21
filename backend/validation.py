@@ -1,30 +1,45 @@
-# nerdrvac listi pakagcery dnel
+import ast
+import re
+
+def add_commas(formatted_string):
+    result = []
+    for i, char in enumerate(formatted_string):
+        if char == ' ' and i > 0 and formatted_string[i - 1] != ',':
+            result.append(", ")
+        result.append(char)
+    return ''.join(result)
+
 def splitting_arguments(input_string):
-    words = parse_expression(input_string)
-    if isinstance(words, str) and words.startswith("error"):
-        return words
+    if not (input_string.startswith("(") and input_string.endswith(")")):
+        return "Input string must be enclosed in parentheses."
+    
+    formatted_string = input_string.replace("(", "[").replace(")", "]")
+    
+    replacements = {
+        r'\btrue\b': "True",
+        r'\bfalse\b': "False",
+        r'\bnil\b': "None"
+    }
+    for pattern, value in replacements.items():
+        formatted_string = re.sub(pattern, value, formatted_string)
 
-    filtered_array = []
+    formatted_string = re.sub(r'(?<!["\'])\b([a-zA-Z_]\w*)\b(?!["\'])', 
+                                lambda match: f"'{match.group(0)}'" if match.group(0) not in {'True', 'False', 'None'} else match.group(0), 
+                                formatted_string)
 
-    for word in words:
-        if word.startswith("(") and word.endswith(")"):
-            nested_result = splitting_arguments(word[1:-1]) 
-            if isinstance(nested_result, str) and nested_result.startswith("error"):
-                return nested_result
-            filtered_array.append(nested_result)
-        elif word.isdigit():
-            filtered_array.append(int(word))
-        elif word.lower() == "nil":
-            filtered_array.append(None)
-        elif word.lower() == "true":
-            filtered_array.append(True)
-        elif word.lower() == "false":
-            filtered_array.append(False)
+    formatted_string = add_commas(formatted_string)
+    print("Formatted string:", formatted_string)  # Debugging
+
+    try:
+        parsed_list = ast.literal_eval(formatted_string)
+        
+        if isinstance(parsed_list, list):
+            print("111 - ", parsed_list)
+            return parsed_list
         else:
-            filtered_array.append(word)
-            # return "error: The function is not called with the correct arguments"
-
-    return filtered_array
+            return "Input string is not a valid list representation."
+    except (ValueError, SyntaxError) as e:
+        return f"Error parsing input string: {e}"
 
 def parse_expression(input_string):
     input_string = input_string.strip()

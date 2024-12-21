@@ -40,7 +40,7 @@ function App() {
   // Function to send the input to the server and receive the output
   const handleRun = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/input', {
+      const response = await fetch('http://localhost:5000/api/input', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -48,6 +48,8 @@ function App() {
         body: JSON.stringify({ userInput: value }),
       });
       const data = await response.json();
+      // setResult(JSON.stringify(data.output, null, 2)); // Տպում է որպես JSON
+
       setResult(data.output);
     } catch (error) {
       console.error('Error:', error);

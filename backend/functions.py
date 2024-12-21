@@ -10,10 +10,8 @@ def si(index, arguments):
     return "error: Invalid arguments."
 
 def id(arguments):
-    # if(valid_argument(arguments)):
+    print("id - ", arguments)
     return arguments
-    
-    # return "error: Invalid arguments."
 
 def tl(arguments):
     # if(valid_argument(arguments)):
