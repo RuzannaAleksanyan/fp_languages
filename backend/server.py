@@ -29,8 +29,10 @@ def receive_input():
         #     print(f"Found in database: {existing_record}")
         # else:
         output = run_bekus_fp(user_input)
-        output = (str(output).replace('[', '(').replace(']', ')')).replace(',', '')
-
+        if isinstance(output, list):
+            output = (str(output).replace('[', '(').replace(']', ')')).replace(',', '').replace('\'', '')
+            output = output.replace('True', 'true').replace('False', 'false').replace('None', 'nil').replace('Nil', 'nil')
+        
             # print(f"Generated output: {output}")
 
             # collection.insert_one({'userInput': user_input, 'output': output})
