@@ -23,27 +23,18 @@ def tl(arguments):
     return "error"
 
 def apndl(arg, arguments):
-    # if len(arg) >= 2:
-    #     return "error"
-
     if arguments[0] == " ":
         return arg
     
     arguments.insert(0, arg)
     return arguments
 
-def apndr(arg, arguments):
-    # if len(arg) >= 2:
-    #     return "error"
-    
+def apndr(arg, arguments):    
     if arguments[0] == " ":
         return arg
     
-    # if(valid_argument(arguments)):
     arguments.append(arg)
     return arguments
-
-    # return "error: Invalid arguments."
 
 def null(arguments):
     if len(arguments) == 1 and arguments[0] == ' ':
@@ -62,6 +53,7 @@ def eq(arguments):
         return "error: Incorrect number of arguments passed to the eq function."
     return "True" if arguments[0] == arguments[1] else "False"
     
+# qnnarkel 0-i depqy
 def add(arguments):
     if not isinstance(arguments, list):
         return "error"
@@ -79,36 +71,34 @@ def add(arguments):
         return "error"
 
 def sub(arguments):
-    # if(valid_argument(arguments)):
+    if not isinstance(arguments, list):
+        return "error"
+    
     if len(arguments) != 2:
-        return "error: The - function was passed the wrong number of arguments."
+        return "error: The + function was passed the wrong number of arguments."
     
-    invalid_values = {None, True, False}  
-    if any(arg in invalid_values for arg in arguments):
-        return "error: One of the arguments is invalid."
+    if (arguments[0] in [True, False, None] and not isinstance(arguments[0], list)) or (arguments[1] in [True, False, None] and not isinstance(arguments[1], list)):
+        return "error1"
     
-    if not all(isinstance(x, (int, float)) for x in arguments):
-        return "error: The arguments to - must be numbers."
-    
-    return arguments[0] - arguments[1]
-    
-    # return "error: Invalid arguments."
+    if isinstance(arguments[0], int) and isinstance(arguments[1], int):   
+        return arguments[0] - arguments[1]
+    else:
+        return "error"
 
 def mul(arguments):
-    # if(valid_argument(arguments)):
+    if not isinstance(arguments, list):
+        return "error"
+    
     if len(arguments) != 2:
-        return "error: The * function was passed the wrong number of arguments."
+        return "error: The + function was passed the wrong number of arguments."
     
-    invalid_values = {None, True, False}  
-    if any(arg in invalid_values for arg in arguments):
-        return "error: One of the arguments is invalid."
+    if (arguments[0] in [True, False, None] and not isinstance(arguments[0], list)) or (arguments[1] in [True, False, None] and not isinstance(arguments[1], list)):
+        return "error1"
     
-    if not all(isinstance(x, (int, float)) for x in arguments):
-        return "error: The arguments to * must be numbers."
-    
-    return arguments[0] * arguments[1]
-    
-    # return "error: Invalid arguments."
+    if isinstance(arguments[0], int) and isinstance(arguments[1], int):   
+        return arguments[0] * arguments[1]
+    else:
+        return "error"
 
 def andd(arguments):
     # if(valid_argument(arguments)):
