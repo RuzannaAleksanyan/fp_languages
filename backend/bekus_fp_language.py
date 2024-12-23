@@ -89,16 +89,7 @@ def function_validation(func, callable_argument, arg=""):
         #     return "esimte"
         #     # res = function_check(x, callable_argument=callable_argument)
 
-        if func == "apndl":
-            return apndl(arg, callable_argument)
-        elif func == "apndr":
-            return apndr(arg, callable_argument)
-        elif func == "const":
-            return const(arg, callable_argument)
-        else:
-            return "error: Unsupported function or incorrect arguments."
-
-    # return "error: Unsupported function or incorrect arguments."
+    return "error: Unsupported function or incorrect arguments."
 
 def cond(arg, call_args):
     functions = [func.strip() for func in arg.split(",")]

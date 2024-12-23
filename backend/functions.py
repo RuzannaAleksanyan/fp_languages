@@ -1,4 +1,5 @@
 from validation import valid_argument
+import numpy as np
 
 def si(index, arguments):
     if(valid_argument(arguments)):
@@ -22,36 +23,72 @@ def tl(arguments):
 
     return "error"
 
-def apndl(arg, arguments):
-    if arguments[0] == " ":
-        return arg
+def apndl(arguments):
+    if not isinstance(arguments, list):
+        return "error1"
     
-    arguments.insert(0, arg)
-    return arguments
+    if len(arguments) != 2:
+        return "error2"
+    
+    x = arguments[0]
+    arr = arguments[1]
 
-def apndr(arg, arguments):    
-    if arguments[0] == " ":
-        return arg
+    if not isinstance(arr, list) and arr == None:
+        return [x]
     
-    arguments.append(arg)
-    return arguments
+    if not isinstance(x, list) and not isinstance(arr, list):
+        return "error"
+    
+    arr.insert(0, x)
+    return arr
+
+def apndr(arguments):    
+    if not isinstance(arguments, list):
+        return "error1"
+    
+    if len(arguments) != 2:
+        return "error2"
+    
+    x = arguments[0]
+    arr = arguments[1]
+
+    if not isinstance(arr, list) and arr == None:
+        return [x]
+    
+    if not isinstance(x, list) and not isinstance(arr, list):
+        return "error"
+    
+    arr.append(x)
+    return arr
 
 def null(arguments):
     if len(arguments) == 1 and arguments[0] == ' ':
         return True
     return all(x is None for x in arguments) if arguments else True
-    
 
-def atom(arguments):
-    if(valid_argument(arguments)):
-        return True
-    
-    return False
+def atom(arguments):  
+    # if isinstance(arguments, (list, tuple)):
+    #     return False
+    # elif isinstance(arguments, (int, str, bool)):
+    #     return True
+    # else:
+    #     return False
+    if isinstance(arguments, (list, tuple)):
+        return False  # Եթե սա հավաքական է, ստուգում ենք, որ ունի մեկ տարր
+    return True
+    # if isinstance(arguments, int) or isinstance(arguments, str) or isinstance(arguments, bool):
+    #     return True
+    # if isinstance(arguments, list) or (not isinstance(arguments, list) and len(arguments) > 1):
+    #     return False
 
 def eq(arguments):
     if len(arguments) != 2:
         return "error: Incorrect number of arguments passed to the eq function."
-    return "True" if arguments[0] == arguments[1] else "False"
+
+    if not isinstance(arguments, list):
+        return "error"
+    
+    return arguments[0] == arguments[1]
     
 # qnnarkel 0-i depqy
 def add(arguments):
@@ -61,8 +98,8 @@ def add(arguments):
     if len(arguments) != 2:
         return "error: The + function was passed the wrong number of arguments."
     
-    if (arguments[0] in [True, False, None] and not isinstance(arguments[0], list)) or (arguments[1] in [True, False, None] and not isinstance(arguments[1], list)):
-        return "error1"
+    # if (arguments[0] in [True, False, None] and not isinstance(arguments[0], list)) or (arguments[1] in [True, False, None] and not isinstance(arguments[1], list)):
+    #     return "error1"
     
     if isinstance(arguments[0], int) and isinstance(arguments[1], int):   
         return arguments[0] + arguments[1]
@@ -77,8 +114,8 @@ def sub(arguments):
     if len(arguments) != 2:
         return "error: The + function was passed the wrong number of arguments."
     
-    if (arguments[0] in [True, False, None] and not isinstance(arguments[0], list)) or (arguments[1] in [True, False, None] and not isinstance(arguments[1], list)):
-        return "error1"
+    # if (arguments[0] in [True, False, None] and not isinstance(arguments[0], list)) or (arguments[1] in [True, False, None] and not isinstance(arguments[1], list)):
+    #     return "error1"
     
     if isinstance(arguments[0], int) and isinstance(arguments[1], int):   
         return arguments[0] - arguments[1]
@@ -92,8 +129,8 @@ def mul(arguments):
     if len(arguments) != 2:
         return "error: The + function was passed the wrong number of arguments."
     
-    if (arguments[0] in [True, False, None] and not isinstance(arguments[0], list)) or (arguments[1] in [True, False, None] and not isinstance(arguments[1], list)):
-        return "error1"
+    # if (arguments[0] in [True, False, None] and not isinstance(arguments[0], list)) or (arguments[1] in [True, False, None] and not isinstance(arguments[1], list)):
+    #     return "error1"
     
     if isinstance(arguments[0], int) and isinstance(arguments[1], int):   
         return arguments[0] * arguments[1]
@@ -101,32 +138,33 @@ def mul(arguments):
         return "error"
 
 def andd(arguments):
-    # if(valid_argument(arguments)):
-    if len(arguments) != 2:
-        return "error: The function was passed the wrong number of arguments."
-    if not all(isinstance(x, bool) for x in arguments):
-        return "error: Both arguments must be boolean values (True or False)."
-    return arguments[0] and arguments[1]
+    if not isinstance(arguments, list):
+        return "error"
     
-    # return "error: Invalid arguments."
+    if len(arguments) != 2:
+        return "error: The + function was passed the wrong number of arguments."
+    
+    if isinstance(arguments[0], bool) and isinstance(arguments[1], bool):   
+        return arguments[0] and arguments[1]
+    else:
+        return "error"
 
 def orr(arguments):
-    # if(valid_argument(arguments)):
-    if len(arguments) != 2:
-        return "error: The function was passed the wrong number of arguments."
-    if not all(isinstance(x, bool) for x in arguments):
-        return "error: Both arguments must be boolean values (True or False)."
-    return arguments[0] or arguments[1]
+    if not isinstance(arguments, list):
+        return "error"
     
-    # return "error: Invalid arguments."
+    if len(arguments) != 2:
+        return "error: The + function was passed the wrong number of arguments."
+    
+    if isinstance(arguments[0], bool) and isinstance(arguments[1], bool):   
+        return arguments[0] or arguments[1]
+    else:
+        return "error"
 
 def nott(argument):
-    # if(valid_argument(argument)):
     if len(argument) != 1:
         return "error: Invalid number of arguments."
     return not argument[0] if isinstance(argument[0], bool) else "error: Invalid argument."
-
-    # return "error: Invalid arguments."
 
 def comp(arg, call_args):
     functions =  [func.strip() for func in arg.split(",")]
@@ -185,6 +223,12 @@ def function_check(func, callable_argument):
         return tl(callable_argument)
     if func == "atom":
         return atom(callable_argument)
+    if func == "apndl":
+        return apndl(callable_argument)
+    elif func == "apndr":
+        return apndr(callable_argument)
+    elif func == "const":
+        return const(callable_argument)
     else:
         "error"
     
