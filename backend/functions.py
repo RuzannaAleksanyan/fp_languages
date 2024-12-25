@@ -62,24 +62,21 @@ def apndr(arguments):
     return arr
 
 def null(arguments):
-    if len(arguments) == 1 and arguments[0] == ' ':
-        return True
-    return all(x is None for x in arguments) if arguments else True
+    if isinstance(arguments, list):
+        return "error"
 
-def atom(arguments):  
-    # if isinstance(arguments, (list, tuple)):
-    #     return False
-    # elif isinstance(arguments, (int, str, bool)):
-    #     return True
-    # else:
-    #     return False
-    if isinstance(arguments, (list, tuple)):
-        return False  # Եթե սա հավաքական է, ստուգում ենք, որ ունի մեկ տարր
-    return True
-    # if isinstance(arguments, int) or isinstance(arguments, str) or isinstance(arguments, bool):
-    #     return True
-    # if isinstance(arguments, list) or (not isinstance(arguments, list) and len(arguments) > 1):
-    #     return False
+    if arguments == None or arguments == '':
+        return True
+    return False
+
+def atom(arguments):
+    print("arg - ", arguments)
+    
+    if isinstance(arguments, (list)):
+        return False
+    if isinstance(arguments, int) or isinstance(arguments, bool) or isinstance(arguments, str):
+        return True
+    return False
 
 def eq(arguments):
     if len(arguments) != 2:
