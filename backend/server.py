@@ -41,6 +41,9 @@ def receive_input():
         print(f"Received input: {user_input}")
         print(f"Output: {output}")
 
+        output = str(output)
+        output = output.replace('True', 'true').replace('False', 'false').replace('None', 'nil').replace('Nil', 'nil')
+
         return jsonify({'output': output}), 200
 
     except Exception as e:

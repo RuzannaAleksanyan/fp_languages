@@ -101,3 +101,23 @@ def cond(arg, call_args):
         return parse(functions[1], call_args)
     else: 
         return parse(functions[2], call_args)
+    
+def comp(arg, call_args):
+    functions =  [func.strip() for func in arg.split(",")]
+    if len(functions) > 2:
+        return "error"
+
+    arguments = parse(functions[1], call_args)
+    return parse(functions[0], arguments)
+
+def constr(arg, call_args):
+    functions =  [func.strip() for func in arg.split(",")]
+
+    if len(functions) > 2:
+        return "error"
+    
+    arg1 = parse(functions[0], call_args)
+    arg2 = parse(functions[1], call_args)
+    result_array = [arg1, arg2]
+
+    return result_array

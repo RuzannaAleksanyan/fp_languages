@@ -1,14 +1,14 @@
-from validation import valid_argument
-import numpy as np
+# from validation import valid_argument
+# import numpy as np
 
 def si(index, arguments):
-    if(valid_argument(arguments)):
-        if not index.isdigit():
-            return "error: Invalid index format."
-        index = int(index)
-        return arguments[index - 1] if 0 < index <= len(arguments) else "error: Index out of bounds."
-
-    return "error: Invalid arguments."
+    if not isinstance(arguments, list):
+        return "error: Invalid arguments."
+    
+    if not index.isdigit():
+        return "error: Invalid index format."
+    index = int(index)
+    return arguments[index - 1] if 0 < index <= len(arguments) else "error: Index out of bounds."
 
 def id(arguments):
     print("id - ", arguments)
@@ -16,10 +16,10 @@ def id(arguments):
 
 def tl(arguments):
     if isinstance(arguments, list):
-        return arguments[1:] if len(arguments) > 1 else "nil"
+        return arguments[1:] if len(arguments) > 1 else None
 
     if arguments == None:
-        return "nil"
+        return None
 
     return "error"
 
@@ -62,6 +62,9 @@ def apndr(arguments):
     return arr
 
 def null(arguments):
+    if isinstance(arguments, list) and len(arguments) == 0:
+        return False
+    
     if isinstance(arguments, list):
         return "error"
 
@@ -69,21 +72,21 @@ def null(arguments):
         return True
     return False
 
-def atom(arguments):
-    print("arg - ", arguments)
-    
+def atom(arguments):    
+    if arguments == "Input string must be enclosed in parentheses.":
+        return "error1"
     if isinstance(arguments, (list)):
         return False
-    if isinstance(arguments, int) or isinstance(arguments, bool) or isinstance(arguments, str):
+    if isinstance(arguments, int) or isinstance(arguments, bool) or isinstance(arguments, str) or arguments == None:
         return True
     return False
 
 def eq(arguments):
-    if len(arguments) != 2:
-        return "error: Incorrect number of arguments passed to the eq function."
-
     if not isinstance(arguments, list):
         return "error"
+    
+    if len(arguments) != 2:
+        return "error: Incorrect number of arguments passed to the eq function."
     
     return arguments[0] == arguments[1]
     
@@ -95,8 +98,8 @@ def add(arguments):
     if len(arguments) != 2:
         return "error: The + function was passed the wrong number of arguments."
     
-    # if (arguments[0] in [True, False, None] and not isinstance(arguments[0], list)) or (arguments[1] in [True, False, None] and not isinstance(arguments[1], list)):
-    #     return "error1"
+    if (arguments[0] in [True, False, None] and not isinstance(arguments[0], list)) or (arguments[1] in [True, False, None] and not isinstance(arguments[1], list)):
+        return "error1"
     
     if isinstance(arguments[0], int) and isinstance(arguments[1], int):   
         return arguments[0] + arguments[1]
@@ -111,8 +114,8 @@ def sub(arguments):
     if len(arguments) != 2:
         return "error: The + function was passed the wrong number of arguments."
     
-    # if (arguments[0] in [True, False, None] and not isinstance(arguments[0], list)) or (arguments[1] in [True, False, None] and not isinstance(arguments[1], list)):
-    #     return "error1"
+    if (arguments[0] in [True, False, None] and not isinstance(arguments[0], list)) or (arguments[1] in [True, False, None] and not isinstance(arguments[1], list)):
+        return "error1"
     
     if isinstance(arguments[0], int) and isinstance(arguments[1], int):   
         return arguments[0] - arguments[1]
@@ -126,8 +129,8 @@ def mul(arguments):
     if len(arguments) != 2:
         return "error: The + function was passed the wrong number of arguments."
     
-    # if (arguments[0] in [True, False, None] and not isinstance(arguments[0], list)) or (arguments[1] in [True, False, None] and not isinstance(arguments[1], list)):
-    #     return "error1"
+    if (arguments[0] in [True, False, None] and not isinstance(arguments[0], list)) or (arguments[1] in [True, False, None] and not isinstance(arguments[1], list)):
+        return "error1"
     
     if isinstance(arguments[0], int) and isinstance(arguments[1], int):   
         return arguments[0] * arguments[1]
@@ -159,32 +162,10 @@ def orr(arguments):
         return "error"
 
 def nott(argument):
-    if len(argument) != 1:
-        return "error: Invalid number of arguments."
-    return not argument[0] if isinstance(argument[0], bool) else "error: Invalid argument."
-
-def comp(arg, call_args):
-    functions =  [func.strip() for func in arg.split(",")]
-    if len(functions) > 2:
+    if not isinstance(argument, bool):
         return "error"
 
-    # parse
-    arguments = function_check(functions[1], call_args)
-    # parse
-    return function_check(functions[0], arguments)
-
-def constr(arg, call_args):
-    functions =  [func.strip() for func in arg.split(",")]
-
-    if len(functions) > 2:
-        return "error"
-    
-    # parse
-    arg1 = function_check(functions[0], call_args)
-    arg2 = function_check(functions[1], call_args)
-    result_array = [arg1, arg2]
-
-    return result_array
+    return not argument
 
 def const(arg, call_args):
     if len(call_args) == 1 and call_args[0] == " ":
