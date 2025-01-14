@@ -50,23 +50,12 @@ def parse(function, callable_argument):
             arg = arg[1:-1].strip()
         else:
             return "error: The parentheses ( or ) are not placed correctly."
-    print("hello1")
-    print(func, callable_argument, arg)
     return function_validation(func, callable_argument, arg)
-
-# sharunakel rekursian erb mi qn=ani funkcia 1 irar mej kanchvum
-# piti skzbic ev verjic spaceery hanel
-def parse2(argument, call_arg):
-    print("esimte")
-    func, arg = argument.split(',', 1)
-    print(func)
-    print(arg)
-    return "esimte"
 
 def function_validation(func, callable_argument, arg=""):
     if not arg:
         if func == "const":
-            return "error"
+            return "error1"
         
         return function_check(func, callable_argument)
     else:
@@ -74,14 +63,17 @@ def function_validation(func, callable_argument, arg=""):
             arg = int(arg)
         except ValueError:
             if func == "comp":
+                # print("1: ", func)
+                # print("2: ", arg, "len: ", len(arg))
+                # print("3: ", callable_argument)
                 return comp(arg, callable_argument)
             if func == "cond":
                 return cond(arg, callable_argument)
             if func == "constr":
                 return constr(arg, callable_argument)
             # arg = parse2(arg, callable_argument)
-            # print("hello4")
-            # print(arg)
+        if func == "const":
+            return const(arg, callable_argument)
         # if(len(arg) >= 2):
         #     return "444"
         # else :
@@ -95,18 +87,16 @@ def cond(arg, call_args):
     functions = [func.strip() for func in arg.split(",")]
 
     if len(functions) > 3:
-        return "error"
-    print("abc - ", parse(functions[0], call_args))
+        return "error2"
     if parse(functions[0], call_args) == "True":
         return parse(functions[1], call_args)
     else: 
         return parse(functions[2], call_args)
     
 def comp(arg, call_args):
-    functions =  [func.strip() for func in arg.split(",")]
+    functions = [arg[:arg.index(",")].strip(), arg[arg.index(",") + 1:].strip()]
     if len(functions) > 2:
-        return "error"
-
+        return "error3"
     arguments = parse(functions[1], call_args)
     return parse(functions[0], arguments)
 
@@ -114,10 +104,12 @@ def constr(arg, call_args):
     functions =  [func.strip() for func in arg.split(",")]
 
     if len(functions) > 2:
-        return "error"
-    
+        return "error4"
+
+    print("func: ", functions, " len: ", len(functions))
+
     arg1 = parse(functions[0], call_args)
     arg2 = parse(functions[1], call_args)
     result_array = [arg1, arg2]
-
+    
     return result_array
