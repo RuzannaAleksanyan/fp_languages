@@ -7,36 +7,45 @@ def run_bekus_fp(user_input):
     # Clear empty lines
     rows = [row for row in rows if row and row.strip()]
 
-    if len(rows) == 2:
-        f_1 = rows[0].find('=')
-        if f_1 != -1:
-            right1 = rows[0][:f_1].strip()
-            rows[0] = rows[0][f_1 + 1:].strip()
+    if len(rows) < 2:
+        return "error: Input format is incorrect."
 
-        f_2 = rows[1].find('(')
-        if f_2 != -1:
-            right2 = rows[1][:f_2].strip()
-            rows[1] = rows[1][f_2 + 1:].strip()
-            if rows[1][-1] != ')':
-                return "error: A function call does not end with a closing parenthesis."
-            rows[1] = rows[1][:-1]
+    processed_rows = []
+    
+    for i, row in enumerate(rows):
+        if i == len(rows) - 1:  # For the last line only
+            f_2 = row.find('(')
+            if f_2 != -1:
+                right2 = row[:f_2].strip()
+                row = row[f_2 + 1:].strip()
+                if row[-1] != ')':
+                    return "error: A function call does not end with a closing parenthesis."
+                row = row[:-1]
+                arguments = splitting_arguments(row)
+                
+                processed_rows.append((right2, arguments))
+            else:
+                return "error: The last line must contain a function call."
+        else:  # For all other lines
+            f_1 = row.find('=')
+            if f_1 != -1:
+                right1 = row[:f_1].strip()
+                row = row[f_1 + 1:].strip()
+                processed_rows.append((right1, row))
+            else:
+                return "error: Invalid assignment format in input."
+            
+    # print("pro: ", processed_rows)
 
-        if right1 != right2:
-            return "error: An invalid function is called!"
+    for i in range(len(processed_rows) - 1):
+        if processed_rows[-1][0] == processed_rows[i][0]:
+            return parse(processed_rows[i][1], processed_rows[-1][1], processed_rows)
+    
+    return "chka tenc funkcia wry petq e kanchvi"
 
-        if rows[1] == "":
-            arguments = " "
-        else:
-            arguments = splitting_arguments(rows[1])
 
-        if arguments == "error: The function is not called with the correct arguments":
-            return arguments
-
-        return parse(rows[0], arguments)
-
-    return "error: Input format is incorrect."
-
-def parse(function, callable_argument):
+def parse(function, callable_argument, functions_array):
+    # print(functions_array)
     paren_index = function.find('(')
     if paren_index != -1:
         func = function[:paren_index].strip()
@@ -50,36 +59,42 @@ def parse(function, callable_argument):
             arg = arg[1:-1].strip()
         else:
             return "error: The parentheses ( or ) are not placed correctly."
-    return function_validation(func, callable_argument, arg)
+    return function_validation(func, callable_argument, functions_array, arg)
 
-def function_validation(func, callable_argument, arg=""):
+def function_validation(func, callable_argument, functions_array, arg=""):
+    # print(functions_array)
+    # print("arg: ", arg)
+    # print("func: ", func)
+    # print("call_arg: ", callable_argument)
+    # return "spasi"
+
+    # # stugumnery anel aystexic orinak f2i
     if not arg:
         if func == "const":
             return "error1"
-        
-        return function_check(func, callable_argument)
+        result = function_check(func, callable_argument, functions_array)
+
+        if result == "stugel zangvacum":
+            for i in range(len(functions_array) - 1):
+                if func == functions_array[i][0]:
+                    print("hello11")
+
+                    print("spas: ", functions_array[i][1])
+                    print("call_arg: ", callable_argument)
+                    return parse(functions_array[i][1], callable_argument, functions_array)
+        return result
     else:
         try:
             arg = int(arg)
         except ValueError:
             if func == "comp":
-                # print("1: ", func)
-                # print("2: ", arg, "len: ", len(arg))
-                # print("3: ", callable_argument)
-                return comp(arg, callable_argument)
+                return comp(arg, callable_argument, functions_array)
             if func == "cond":
-                return cond(arg, callable_argument)
+                return cond(arg, callable_argument, functions_array)
             if func == "constr":
-                return constr(arg, callable_argument)
-            # arg = parse2(arg, callable_argument)
+                return constr(arg, callable_argument, functions_array)
         if func == "const":
             return const(arg, callable_argument)
-        # if(len(arg) >= 2):
-        #     return "444"
-        # else :
-        #     # ???
-        #     return "esimte"
-        #     # res = function_check(x, callable_argument=callable_argument)
 
     return "error: Unsupported function or incorrect arguments."
 
@@ -104,37 +119,36 @@ def split_arguments(arg):
 
     return result
 
-def cond(arg, call_args):
+def cond(arg, call_args, functions_array):
     functions = split_arguments(arg)
-
-    print("1: ", functions[0])
-    print("2: ", functions[1])
-    print("3: ", functions[2])
 
     if len(functions) > 3:
         return "error2"
-    if parse(functions[0], call_args) == "True":
-        return parse(functions[1], call_args)
+    if parse(functions[0], call_args, functions_array) == "True":
+        return parse(functions[1], call_args, functions_array)
     else: 
-        return parse(functions[2], call_args)
+        return parse(functions[2], call_args, functions_array)
     
-def comp(arg, call_args):
-    functions = [arg[:arg.index(",")].strip(), arg[arg.index(",") + 1:].strip()]
+def comp(arg, call_args, functions_array):
+    # functions = [arg[:arg.index(",")].strip(), arg[arg.index(",") + 1:].strip()]
+    functions = split_arguments(arg)
+
     if len(functions) > 2:
         return "error3"
-    arguments = parse(functions[1], call_args)
-    return parse(functions[0], arguments)
+    arguments = parse(functions[1], call_args, functions_array)
+    return parse(functions[0], arguments, functions_array)
 
-def constr(arg, call_args):
-    functions =  [func.strip() for func in arg.split(",")]
+def constr(arg, call_args, functions_array):
+    # functions =  [func.strip() for func in arg.split(",")]
+    functions = split_arguments(arg)
 
     if len(functions) > 2:
         return "error4"
 
     print("func: ", functions, " len: ", len(functions))
 
-    arg1 = parse(functions[0], call_args)
-    arg2 = parse(functions[1], call_args)
+    arg1 = parse(functions[0], call_args, functions_array)
+    arg2 = parse(functions[1], call_args, functions_array)
     result_array = [arg1, arg2]
 
     if len(result_array) == 1:

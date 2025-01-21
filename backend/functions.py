@@ -92,6 +92,7 @@ def eq(arguments):
     
 # qnnarkel 0-i depqy
 def add(arguments):
+    print("arg: ", arguments)
     if not isinstance(arguments, list):
         return "error15"
     
@@ -100,8 +101,9 @@ def add(arguments):
         return "error: The + function was passed the wrong number of arguments."
     
     print("hello: ", arguments)
-    if (arguments[0] in [True, False, None] and not isinstance(arguments[0], list)) or (arguments[1] in [True, False, None] and not isinstance(arguments[1], list)):
-        return "error16"
+    # ???
+    # if (arguments[0] in [True, False, None] and not isinstance(arguments[0], list)) or (arguments[1] in [True, False, None] and not isinstance(arguments[1], list)):
+    #     return "error16"
     
     if isinstance(arguments[0], int) and isinstance(arguments[1], int):   
         return arguments[0] + arguments[1]
@@ -116,8 +118,9 @@ def sub(arguments):
     if len(arguments) != 2:
         return "error: The + function was passed the wrong number of arguments."
     
-    if (arguments[0] in [True, False, None] and not isinstance(arguments[0], list)) or (arguments[1] in [True, False, None] and not isinstance(arguments[1], list)):
-        return "error19"
+    # ??
+    # if (arguments[0] in [True, False, None] and not isinstance(arguments[0], list)) or (arguments[1] in [True, False, None] and not isinstance(arguments[1], list)):
+    #     return "error19"
     
     if isinstance(arguments[0], int) and isinstance(arguments[1], int):   
         return arguments[0] - arguments[1]
@@ -180,7 +183,7 @@ def const(arg, call_args):
     
     return "error29"
 
-def function_check(func, callable_argument):
+def function_check(func, callable_argument, functions_array):
     if func == "id":
         return id(callable_argument)
     if func == "eq":
@@ -212,5 +215,5 @@ def function_check(func, callable_argument):
     # elif func == "const":
     #     return const(callable_argument)
     else:
-        "error30"
+        return "stugel zangvacum"
     
