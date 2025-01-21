@@ -81,9 +81,10 @@ def atom(arguments):
     return False
 
 def eq(arguments):
+    print("arg: ", arguments)
     if not isinstance(arguments, list):
         return "error14"
-    
+   
     if len(arguments) != 2:
         return "error: Incorrect number of arguments passed to the eq function."
     

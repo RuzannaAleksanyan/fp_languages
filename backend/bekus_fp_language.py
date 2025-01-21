@@ -83,8 +83,33 @@ def function_validation(func, callable_argument, arg=""):
 
     return "error: Unsupported function or incorrect arguments."
 
+def split_arguments(arg):
+    result = []
+    current = []
+    balance = 0  
+
+    for char in arg:
+        if char == ',' and balance == 0:
+            result.append(''.join(current).strip())
+            current = []
+        else:
+            current.append(char)
+            if char == '(':
+                balance += 1
+            elif char == ')':
+                balance -= 1
+
+    if current:
+        result.append(''.join(current).strip())
+
+    return result
+
 def cond(arg, call_args):
-    functions = [func.strip() for func in arg.split(",")]
+    functions = split_arguments(arg)
+
+    print("1: ", functions[0])
+    print("2: ", functions[1])
+    print("3: ", functions[2])
 
     if len(functions) > 3:
         return "error2"
@@ -111,5 +136,8 @@ def constr(arg, call_args):
     arg1 = parse(functions[0], call_args)
     arg2 = parse(functions[1], call_args)
     result_array = [arg1, arg2]
+
+    if len(result_array) == 1:
+        return result_array[0]
     
     return result_array
