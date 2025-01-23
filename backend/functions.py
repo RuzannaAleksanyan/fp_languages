@@ -1,6 +1,11 @@
 # from validation import valid_argument
 # import numpy as np
 
+
+# f1=cond(comp(eq, constr(id, const(0))), const(1), f2)
+# f2=comp(*, constr(id, comp(f1, comp(-, constr(id, const(1))))))
+# f1(1)
+
 def si(index, arguments):
     if not isinstance(arguments, list):
         return "error: Invalid arguments."
