@@ -86,7 +86,7 @@ def atom(arguments):
     return False
 
 def eq(arguments):
-    print("arg: ", arguments)
+    # print("arg: ", arguments)
     if not isinstance(arguments, list):
         return "error14"
    
@@ -97,7 +97,7 @@ def eq(arguments):
     
 # qnnarkel 0-i depqy
 def add(arguments):
-    print("arg: ", arguments)
+    # print("arg: ", arguments)
     if not isinstance(arguments, list):
         return "error15"
     
