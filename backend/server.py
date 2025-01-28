@@ -38,8 +38,8 @@ def receive_input():
             # collection.insert_one({'userInput': user_input, 'output': output})
             # print("Stored in database.")
 
-        # print(f"Received input: {user_input}")
-        # print(f"Output: {output}")
+        print(f"Received input: {user_input}")
+        print(f"Output: {output}")
 
         output = str(output)
         output = output.replace('True', 'true').replace('False', 'false').replace('None', 'nil').replace('Nil', 'nil')

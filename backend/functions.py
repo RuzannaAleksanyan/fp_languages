@@ -6,6 +6,10 @@
 # f2=comp(*, constr(id, comp(f1, comp(-, constr(id, const(1))))))
 # f1(1)
 
+# f1=cond(eq, const(1), f2)
+# f2=comp(*, constr(id, comp(f1, id)))
+# f1((1 2))
+
 def si(index, arguments):
     if not isinstance(arguments, list):
         return "error: Invalid arguments."
