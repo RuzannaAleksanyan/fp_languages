@@ -14,9 +14,16 @@
 # f1((1 2))
 # output: max iteration
 
+# f1=cond(null, const(0), cond(comp(atom, s1), f2, f3))
+# f2=comp(+, constr(const(1), comp(f1, tl)))
+# f3=comp(+, constr(comp(f1, s1), comp(f1, tl)))
+# f1((1 2 3 4 7))
+
+# f1=cond(null, const(nil), comp(apndr, constr(s1, comp(f1, tl))))
+
 def si(index, arguments):
     if not isinstance(arguments, list):
-        return "error: Invalid arguments."
+        return "error: si: Invalid arguments."
     
     if not index.isdigit():
         return "error: Invalid index format."
@@ -54,7 +61,7 @@ def apndl(arguments):
     arr.insert(0, x)
     return arr
 
-def apndr(arguments):    
+def apndr(arguments):  
     if not isinstance(arguments, list):
         return "error9"
     
@@ -67,9 +74,12 @@ def apndr(arguments):
     if not isinstance(arr, list) and arr == None:
         return [x]
     
-    if not isinstance(x, list) and not isinstance(arr, list):
-        return "error11"
+    if not isinstance(arr, (list, dict)) :
+        arr = [arr]
     
+    # if not isinstance(x, list) and not isinstance(arr, list):
+    #     return "error11"
+
     arr.append(x)
     return arr
 
@@ -77,8 +87,8 @@ def null(arguments):
     if isinstance(arguments, list) and len(arguments) == 0:
         return False
     
-    if isinstance(arguments, list):
-        return "error12"
+    # if isinstance(arguments, list):
+    #     return "error12"
 
     if arguments == None or arguments == '':
         return True
