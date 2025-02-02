@@ -1,14 +1,18 @@
 # from validation import valid_argument
 # import numpy as np
 
-
 # f1=cond(comp(eq, constr(id, const(0))), const(1), f2)
 # f2=comp(*, constr(id, comp(f1, comp(-, constr(id, const(1))))))
 # f1(1)
+# output: 
+# f1(0) = 1
+# f1(0) = 0
+# f1((1 2)) = error {eq}
 
 # f1=cond(eq, const(1), f2)
 # f2=comp(*, constr(id, comp(f1, id)))
 # f1((1 2))
+# output: max iteration
 
 def si(index, arguments):
     if not isinstance(arguments, list):
@@ -134,6 +138,7 @@ def sub(arguments):
     if isinstance(arguments[0], int) and isinstance(arguments[1], int):   
         return arguments[0] - arguments[1]
     else:
+        print("arg: ", arguments)
         return "error20"
 
 def mul(arguments):
@@ -143,8 +148,8 @@ def mul(arguments):
     if len(arguments) != 2:
         return "error: The + function was passed the wrong number of arguments."
     
-    if (arguments[0] in [True, False, None] and not isinstance(arguments[0], list)) or (arguments[1] in [True, False, None] and not isinstance(arguments[1], list)):
-        return "error22"
+    # if (arguments[0] in [True, False, None] and not isinstance(arguments[0], list)) or (arguments[1] in [True, False, None] and not isinstance(arguments[1], list)):
+    #     return "error22"
     
     if isinstance(arguments[0], int) and isinstance(arguments[1], int):   
         return arguments[0] * arguments[1]
