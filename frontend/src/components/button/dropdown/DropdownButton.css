@@ -1,0 +1,60 @@
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-button {
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 370px;
+    height: 40px;
+    font-size: 19px;
+    position: absolute;
+    top: 25px;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 370px;
+
+    background: #f0f0f0;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.dropdown-menu div {
+    padding: 15px;
+    cursor: pointer;
+}
+
+.dropdown-menu div:hover {
+    background-color: #f0f0f0;
+}
+
+.dropdown-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px; /* Icon-ի ու տեքստի միջև տարածություն */
+    padding: 10px 15px;
+}
+
+.dropdown-icon {
+    width: 20px; /* Icon-ի չափ */
+    height: 20px;
+}
+
+.dropdown-chevron {
+    width: 18px;
+    height: 18px;
+    margin-left: auto; /* Ավելացնում է աջ կողմում */
+}

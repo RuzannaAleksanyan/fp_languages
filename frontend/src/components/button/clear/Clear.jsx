@@ -22,7 +22,7 @@ const ClearField = ({ value, setValue, isDarkMode }) => {
         icon={faTrash}
         className={`${classes.icon} ${isDarkMode ? classes.dark : classes.light}`}
       /> 
-      Clear
+      
       {/* <span className={`${classes.tooltip} ${isDarkMode ? classes.dark : ''}`}></span> */}
     </button>
   );
