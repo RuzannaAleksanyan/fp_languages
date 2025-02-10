@@ -40,14 +40,14 @@ def tl(arguments):
     if arguments == None:
         return None
 
-    return "error5"
+    return "error: tl: Invalid arguments."
 
 def apndl(arguments):
     if not isinstance(arguments, list):
-        return "error6"
+        return "error: apndl: Invalid arguments."
     
     if len(arguments) != 2:
-        return "error7"
+        return "error: apndl: Invalid arguments."
     
     x = arguments[0]
     arr = arguments[1]
@@ -56,7 +56,7 @@ def apndl(arguments):
         return [x]
     
     if not isinstance(x, list) and not isinstance(arr, list):
-        return "erro8"
+        return "error: apndl: Invalid arguments."
     
     arr.insert(0, x)
     return arr
@@ -106,7 +106,7 @@ def atom(arguments):
 def eq(arguments):
     # print("arg: ", arguments)
     if not isinstance(arguments, list):
-        return "error14"
+        return "error: eq: Invalid arguments."
    
     if len(arguments) != 2:
         return "error: Incorrect number of arguments passed to the eq function."
