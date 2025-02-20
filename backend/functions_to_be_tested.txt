@@ -1,0 +1,22 @@
+from validation import valid_argument
+import numpy as np
+
+f1=cond(comp(eq, constr(id, const(0))), const(1), f2)
+f2=comp(*, constr(id, comp(f1, comp(-, constr(id, const(1))))))
+f1(1)
+output: 
+f1(0) = 1
+f1(0) = 0
+f1((1 2)) = error {eq}
+
+f1=cond(eq, const(1), f2)
+f2=comp(*, constr(id, comp(f1, id)))
+f1((1 2))
+output: max iteration
+
+f1=cond(null, const(0), cond(comp(atom, s1), f2, f3))
+f2=comp(+, constr(const(1), comp(f1, tl)))
+f3=comp(+, constr(comp(f1, s1), comp(f1, tl)))
+f1((1 2 3 4 7))
+
+f1=cond(null, const(nil), comp(apndr, constr(s1, comp(f1, tl))))

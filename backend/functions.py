@@ -1,26 +1,3 @@
-# from validation import valid_argument
-# import numpy as np
-
-# f1=cond(comp(eq, constr(id, const(0))), const(1), f2)
-# f2=comp(*, constr(id, comp(f1, comp(-, constr(id, const(1))))))
-# f1(1)
-# output: 
-# f1(0) = 1
-# f1(0) = 0
-# f1((1 2)) = error {eq}
-
-# f1=cond(eq, const(1), f2)
-# f2=comp(*, constr(id, comp(f1, id)))
-# f1((1 2))
-# output: max iteration
-
-# f1=cond(null, const(0), cond(comp(atom, s1), f2, f3))
-# f2=comp(+, constr(const(1), comp(f1, tl)))
-# f3=comp(+, constr(comp(f1, s1), comp(f1, tl)))
-# f1((1 2 3 4 7))
-
-# f1=cond(null, const(nil), comp(apndr, constr(s1, comp(f1, tl))))
-
 def si(index, arguments):
     if not isinstance(arguments, list):
         return "error: si: Invalid arguments."
@@ -63,10 +40,10 @@ def apndl(arguments):
 
 def apndr(arguments):  
     if not isinstance(arguments, list):
-        return "error9"
+        return "error: apndr: Invalid arguments."
     
     if len(arguments) != 2:
-        return "error10"
+        return "error: apndr: Invalid arguments."
     
     x = arguments[0]
     arr = arguments[1]
@@ -96,7 +73,7 @@ def null(arguments):
 
 def atom(arguments):    
     if arguments == "Input string must be enclosed in parentheses.":
-        return "error13"
+        return "error: atom: Invalid arguments."
     if isinstance(arguments, (list)):
         return False
     if isinstance(arguments, int) or isinstance(arguments, bool) or isinstance(arguments, str) or arguments == None:
@@ -117,13 +94,13 @@ def eq(arguments):
 def add(arguments):
     # print("arg: ", arguments)
     if not isinstance(arguments, list):
-        return "error15"
+        return "error: add: Invalid arguments."
     
     # warning
     if len(arguments) != 2:
         return "error: The + function was passed the wrong number of arguments."
     
-    print("hello: ", arguments)
+    # print("hello: ", arguments)
     # ???
     # if (arguments[0] in [True, False, None] and not isinstance(arguments[0], list)) or (arguments[1] in [True, False, None] and not isinstance(arguments[1], list)):
     #     return "error16"
@@ -132,11 +109,11 @@ def add(arguments):
         return arguments[0] + arguments[1]
     else:
         # voch tvayin arjeq kam idetifier
-        return "error17"
+        return "error: Non-numeric value"
 
 def sub(arguments):
     if not isinstance(arguments, list):
-        return "error18"
+        return "error: sub: Invalid arguments."
     
     if len(arguments) != 2:
         return "error: The + function was passed the wrong number of arguments."
@@ -148,12 +125,11 @@ def sub(arguments):
     if isinstance(arguments[0], int) and isinstance(arguments[1], int):   
         return arguments[0] - arguments[1]
     else:
-        print("arg: ", arguments)
-        return "error20"
+        return "error: Non-numeric value"
 
 def mul(arguments):
     if not isinstance(arguments, list):
-        return "error21"
+        return "error: mul: Invalid arguments."
     
     if len(arguments) != 2:
         return "error: The + function was passed the wrong number of arguments."
@@ -164,11 +140,11 @@ def mul(arguments):
     if isinstance(arguments[0], int) and isinstance(arguments[1], int):   
         return arguments[0] * arguments[1]
     else:
-        return "error23"
+        return "error: Non-numeric value"
 
 def andd(arguments):
     if not isinstance(arguments, list):
-        return "error24"
+        return "error: and: Invalid arguments."
     
     if len(arguments) != 2:
         return "error: The + function was passed the wrong number of arguments."
@@ -180,7 +156,7 @@ def andd(arguments):
 
 def orr(arguments):
     if not isinstance(arguments, list):
-        return "error26"
+        return "error: or: Invalid arguments."
     
     if len(arguments) != 2:
         return "error: The + function was passed the wrong number of arguments."
@@ -192,7 +168,7 @@ def orr(arguments):
 
 def nott(argument):
     if not isinstance(argument, bool):
-        return "error28"
+        return "error: not: Invalid arguments."
 
     return not argument
 
@@ -200,12 +176,12 @@ def const(arg, call_args):
     if not isinstance(call_args, list) and call_args != "":
         return arg
     if len(call_args) == 1 and call_args[0] == " ":
-        return "empty args list"
+        return "error: Empty args list"
     
     if len(call_args) > 0:
         return arg
     
-    return "error29"
+    return "error: const: Invalid arguments."
 
 def function_check(func, callable_argument, functions_array):
     if func == "id":
