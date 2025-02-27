@@ -1,17 +1,15 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-# from backend.Bekus.bekus_fp_language import run_bekus_fp
 import sys
 import os
 
-# Ստանում ենք ընթացիկ թղթապանակի ուղին
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
-# Ավելացնում ենք backend-ի ծնող թղթապանակը Python-ի ուղիների մեջ
 sys.path.append(os.path.dirname(current_dir))
-from Bekus.bekus_fp_language import run_bekus_fp
-from backend.Herban_gyodel_klini.herban_gyodel_klini_fp_language import run_herban_gyodel_klini_fp
+# from backend.Bekus.bekus_fp_language import run_bekus_fp
+# from backend.Herban_Gyodel_Klini.herban_gyodel_klini_fp_language import run_herban_gyodel_klini_fp
 from pymongo import MongoClient
+from backend.run import run_fp
 
 app = Flask(__name__)
 CORS(app)
@@ -39,17 +37,12 @@ def receive_input():
         # existing_record = collection.find_one({'userInput': user_input})
 
         # Process user input based on the selected option
-        if selected_option == "Bekus fp language":
-            # if existing_record:
-            #     output = existing_record.get('output', 'No output found')
-            #     print(f"Found in database: {existing_record}")
-            # else:
-            output = run_bekus_fp(user_input)
-        elif selected_option == "Herbrand Godel Klini fp language":
-            output = run_herban_gyodel_klini_fp(user_input)
-        else:
-            output = "error: Invalid language selected"
-        
+        # if existing_record:
+        #     output = existing_record.get('output', 'No output found')
+        #     print(f"Found in database: {existing_record}")
+        # else:
+        output = run_fp(user_input, selected_option)
+       
         # Format the output
         if isinstance(output, list):
             output = (str(output).replace('[', '(').replace(']', ')')).replace(',', '').replace('\'', '')
