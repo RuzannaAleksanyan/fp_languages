@@ -1,6 +1,16 @@
-from functions import *
+import sys
+import os
 
-from validation import splitting_arguments
+# Ստանում ենք ընթացիկ ֆայլի դիրքը
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Հաշվարկում ենք `backend` թղթապանակի ուղին
+backend_dir = os.path.join(current_dir, "..")  # Տեղափոխվում ենք վերև
+sys.path.append(backend_dir)
+
+from backend.Bekus.functions import *
+
+from backend.Bekus.validation import splitting_arguments
 
 def run_bekus_fp(user_input):
     rows = user_input.splitlines()

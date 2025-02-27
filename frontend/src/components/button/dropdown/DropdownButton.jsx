@@ -1,24 +1,28 @@
 // import { useState } from 'react';
+// import { ChevronDown, Globe } from 'lucide-react';
 // import './DropdownButton.css';
 
 // function DropdownButton({ onSelect }) {
 //   const [isMenuOpen, setIsMenuOpen] = useState(false);
-//   const [selectedOption, setSelectedOption] = useState(null);
+//   const [selectedOption, setSelectedOption] = useState("");
 
 //   const toggleMenu = () => {
 //     setIsMenuOpen(!isMenuOpen);
 //   };
 
 //   const handleOptionSelect = (option) => {
+//     console.log("Dropdown selected:", option);  // Debug log
 //     setSelectedOption(option);
+//     onSelect(option); // Pass selected option to parent component (App.jsx)
 //     setIsMenuOpen(false);
-//     onSelect(option);
 //   };
 
 //   return (
 //     <div className="dropdown">
 //       <button className="dropdown-button" onClick={toggleMenu}>
+//         <Globe className="dropdown-icon" />
 //         {selectedOption ? selectedOption : 'Ընտրել'}
+//         <ChevronDown className="dropdown-chevron" />
 //       </button>
 //       {isMenuOpen && (
 //         <div className="dropdown-menu">
@@ -32,29 +36,36 @@
 
 // export default DropdownButton;
 
-
-import { useState } from 'react';
-import { ChevronDown, Globe } from 'lucide-react'; // Icon-ները ներմուծում ենք
+import { useState, useEffect } from 'react';
+import { ChevronDown, Globe } from 'lucide-react';
 import './DropdownButton.css';
 
 function DropdownButton({ onSelect }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState(() => {
+    return localStorage.getItem("selectedDropdownOption") || "";
+  });
+
+  useEffect(() => {
+    onSelect(selectedOption); // Վերականգնված արժեքը փոխանցում ենք `App.jsx`-ին
+  }, [selectedOption, onSelect]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   const handleOptionSelect = (option) => {
+    console.log("Dropdown selected:", option);
     setSelectedOption(option);
-    setIsMenuOpen(false);
+    localStorage.setItem("selectedDropdownOption", option); // Պահպանում ենք `localStorage`-ում
     onSelect(option);
+    setIsMenuOpen(false);
   };
 
   return (
     <div className="dropdown">
       <button className="dropdown-button" onClick={toggleMenu}>
-        <Globe className="dropdown-icon" /> {/* Այստեղ ավելացրու icon */}
+        <Globe className="dropdown-icon" />
         {selectedOption ? selectedOption : 'Ընտրել'}
         <ChevronDown className="dropdown-chevron" />
       </button>
