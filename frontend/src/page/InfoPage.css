@@ -1,0 +1,71 @@
+.infoButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    font-size: 19px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    position: absolute;
+    top: 10px;
+    right: 32px;
+
+}
+
+.info-page {
+    display: flex;
+    height: 100vh;
+}
+
+.left-panel {
+    width: 110px;
+    background-color: rgb(225, 232, 238); /* Ցանկացած գույն */
+}
+
+.content {
+    flex: 0; /* Մնացած տարածքը */
+    /* padding: 20px; */
+}
+
+
+/* Light mode */
+.light .infoButton {
+    background-color: rgb(225, 232, 238);
+    color: #000000;
+}
+
+/* Dark mode */
+.dark .infoButton {
+    background-color: #3b3a3a;
+    color: white;
+}
+
+/* Icon styling */
+.infoButton .icon {
+    font-size: 24px;
+    transition: color 0.3s ease;
+    height: 35px;
+    margin-right: 5px;
+}
+
+/* Tooltip styles */
+.tooltip {
+    position: absolute;
+    top: 60px;
+    color: black;
+    padding: 5px 10px;
+    font-size: 10px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    background-color: white;
+    border-radius: 3px;
+}
+
+/* Tooltip for dark mode */
+.dark .tooltip {
+    color: white;
+    background-color: #2f2f2f;
+}

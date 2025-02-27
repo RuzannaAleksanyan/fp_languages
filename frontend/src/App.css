@@ -48,27 +48,3 @@ body {
   background-color: #3b3a3a;
   color: white;
 }
-
-.logo-container {
-  display: flex;
-  justify-content: center; 
-  align-items: center;    
-  width: 90px;     
-  height: 90px;
-
-  cursor: pointer;
-  position: relative; 
-  border-radius: 5px;
-  border: none;
-  transition: background-color 0.3s ease, color 0.3s ease;
-
-  left: 70px; 
-}
-
-.logo-container img {
-  max-width: 120px;
-  height: 80px;
-}
-
-
-

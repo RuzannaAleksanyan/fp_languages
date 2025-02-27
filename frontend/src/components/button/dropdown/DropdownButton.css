@@ -9,15 +9,15 @@
     cursor: pointer;
     border-radius: 5px;
 
-
     display: flex;
     align-items: center;
     justify-content: center;
     width: 370px;
     height: 40px;
+    left: 120px;
     font-size: 19px;
     position: absolute;
-    top: 25px;
+    top: 28px;
 }
 
 .dropdown-menu {
