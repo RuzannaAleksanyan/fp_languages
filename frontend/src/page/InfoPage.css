@@ -21,6 +21,10 @@
 .text {
     top: 200px;
     /* text-align: center; */
+    overflow-y: auto;  
+    max-height: 850px; /* Կամ այլ արժեք՝ ըստ անհրաժեշտության */
+    padding-right: 10px; /* Ավելացրեցի, որպեսզի scrollbar-ը չկպչի տեքստին */
+
 }  
 
 .text .title {
