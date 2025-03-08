@@ -1,20 +1,40 @@
-// import { useState } from 'react';
+// import { useState, useEffect } from 'react';
+// import { useLocation, useNavigate } from 'react-router-dom';
 // import { ChevronDown, Globe } from 'lucide-react';
 // import './DropdownButton.css';
 
 // function DropdownButton({ onSelect }) {
 //   const [isMenuOpen, setIsMenuOpen] = useState(false);
-//   const [selectedOption, setSelectedOption] = useState("");
+//   const location = useLocation();
+//   const navigate = useNavigate();
+  
+//   const [selectedOption, setSelectedOption] = useState(() => {
+//     return localStorage.getItem("selectedDropdownOption") || "";
+//   });
+
+//   useEffect(() => {
+//     onSelect(selectedOption); 
+//   }, [selectedOption, onSelect]);
 
 //   const toggleMenu = () => {
 //     setIsMenuOpen(!isMenuOpen);
 //   };
 
 //   const handleOptionSelect = (option) => {
-//     console.log("Dropdown selected:", option);  // Debug log
 //     setSelectedOption(option);
-//     onSelect(option); // Pass selected option to parent component (App.jsx)
+//     localStorage.setItem("selectedDropdownOption", option); 
+//     onSelect(option);
 //     setIsMenuOpen(false);
+
+//     const isInfoPage = location.pathname === "/info-bekus" || location.pathname === "/info-herbrand";
+
+//     if (isInfoPage) {
+//       if (option === 'Bekus fp language' && location.pathname !== "/info-bekus") {
+//         navigate("/info-bekus");
+//       } else if (option === 'Herbrand Godel Klini fp language' && location.pathname !== "/info-herbrand") {
+//         navigate("/info-herbrand");
+//       }
+//     }
 //   };
 
 //   return (
@@ -36,34 +56,65 @@
 
 // export default DropdownButton;
 
-import { useState, useEffect } from 'react';
+
+import { useState, useEffect, useRef } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { ChevronDown, Globe } from 'lucide-react';
 import './DropdownButton.css';
 
 function DropdownButton({ onSelect }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  
   const [selectedOption, setSelectedOption] = useState(() => {
     return localStorage.getItem("selectedDropdownOption") || "";
   });
 
+  const dropdownRef = useRef(null);  // Dropdown-ի ref
+
   useEffect(() => {
-    onSelect(selectedOption); // Վերականգնված արժեքը փոխանցում ենք `App.jsx`-ին
+    onSelect(selectedOption); 
   }, [selectedOption, onSelect]);
+
+  // Ավելացնում ենք օնկլիք իրադարձություն ամբողջ էջում, որ փակենք dropdown-ը եթե սեղմվում է դուրս
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsMenuOpen(false);  // Փակել մենյուն
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);  // Խուսափել հիշողության leaks-ից
+    };
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   const handleOptionSelect = (option) => {
-    console.log("Dropdown selected:", option);
     setSelectedOption(option);
-    localStorage.setItem("selectedDropdownOption", option); // Պահպանում ենք `localStorage`-ում
+    localStorage.setItem("selectedDropdownOption", option); 
     onSelect(option);
     setIsMenuOpen(false);
+
+    const isInfoPage = location.pathname === "/info-bekus" || location.pathname === "/info-herbrand";
+
+    if (isInfoPage) {
+      if (option === 'Bekus fp language' && location.pathname !== "/info-bekus") {
+        navigate("/info-bekus");
+      } else if (option === 'Herbrand Godel Klini fp language' && location.pathname !== "/info-herbrand") {
+        navigate("/info-herbrand");
+      }
+    }
   };
 
   return (
-    <div className="dropdown">
+    <div className="dropdown" ref={dropdownRef}>
       <button className="dropdown-button" onClick={toggleMenu}>
         <Globe className="dropdown-icon" />
         {selectedOption ? selectedOption : 'Ընտրել'}

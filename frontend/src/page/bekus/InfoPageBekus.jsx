@@ -1,6 +1,6 @@
-import './InfoPage.css';
+import './InfoPageBekus.css';
 
-const InfoPage = () => {
+const InfoPageBekus = () => {
   return (
     <div className="info-page">
       <div className="left-panel"></div> 
@@ -80,4 +80,4 @@ const InfoPage = () => {
   );
 };
 
-export default InfoPage;
+export default InfoPageBekus;

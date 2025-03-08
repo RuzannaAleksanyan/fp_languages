@@ -1,0 +1,97 @@
+.infoButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    font-size: 19px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    position: absolute;
+    top: 10px;
+    right: 32px;
+}
+
+.info-page {
+    display: flex;
+    height: 100vh;
+}
+
+.text {
+    top: 200px;
+    /* text-align: center; */
+    overflow-y: auto;  
+    max-height: 850px; /* Կամ այլ արժեք՝ ըստ անհրաժեշտության */
+    padding-right: 10px; /* Ավելացրեցի, որպեսզի scrollbar-ը չկպչի տեքստին */
+
+}  
+
+.text .title {
+    padding-top: 40px;
+    text-align: center; /* Տեքստը կենտրոնացնում է հորիզոնական ուղղությամբ */
+    margin: 0 auto; /* Կենտրոնացնում է տարրը վիզուալորեն */
+    font-size: 36px;
+  }
+  
+
+.text p {
+    display: block;
+    margin: 10px 0;
+    margin-bottom: 10px;
+    /* text-align: center; */
+    padding-left: 80px; /* Պարզապես օրինակ, եթե ցանկանում եք դառնալ խիստ պատշաճ հեռավորություն */
+    padding-right: 80px;
+
+    /* font-size: 20px; */
+}
+
+.left-panel {
+    width: 145px;
+    background-color: rgb(225, 232, 238);
+}
+
+.content {
+    flex: 0;
+}
+
+
+/* Light mode */
+.light .infoButton {
+    background-color: rgb(225, 232, 238);
+    color: #000000;
+}
+
+/* Dark mode */
+.dark .infoButton {
+    background-color: #3b3a3a;
+    color: white;
+}
+
+/* Icon styling */
+.infoButton .icon {
+    font-size: 24px;
+    transition: color 0.3s ease;
+    height: 35px;
+    margin-right: 5px;
+}
+
+/* Tooltip styles */
+.tooltip {
+    position: absolute;
+    top: 60px;
+    color: black;
+    padding: 5px 10px;
+    font-size: 10px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    background-color: white;
+    border-radius: 3px;
+}
+
+/* Tooltip for dark mode */
+.dark .tooltip {
+    color: white;
+    background-color: #2f2f2f;
+}
