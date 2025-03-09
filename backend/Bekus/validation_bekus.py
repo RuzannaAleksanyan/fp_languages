@@ -14,7 +14,7 @@ def is_single_element(input_string):
         return False
     return bool(input_string.strip())
 
-def splitting_arguments(input_string):
+def splitting_arguments_bekus(input_string):
     print(input_string)
     
     if not (input_string.startswith("(") and input_string.endswith(")")):
