@@ -1,11 +1,11 @@
-def i(arg_list, index, size):
-    if size != len(arg_list):
+def I(arg_list, i, k):
+    if k != len(arg_list):
         return "error1"
     
-    if index < 0 or index > size:
+    if i < 0 or i > k:
         return "error2"
     
-    return arg_list[index - 1]
+    return arg_list[i - 1]
 
 def o(arg):
     if len(arg) != 1:
@@ -25,7 +25,13 @@ def s(arg):
     
     return arg[0] + 1
 
-def S(functions, call_arg):
+def S(functions, call_arg, k, n):
+    if  k != len(call_arg):
+        return "Error: sxal qanakov parametr"
+    
+    if n != len(functions) - 1:
+        return "Error: sxal qanakov funkcianer"
+
     results = []  
     for func in functions:
         if func == functions[0]:
@@ -33,10 +39,18 @@ def S(functions, call_arg):
         result = function_check(func, call_arg)  
         results.append(result) 
 
-    results = function_check(functions, results)
+    print("func: ", result)    
+
+    results = function_check(functions[0], results)
     return results
 
 def function_check(func, call_arg):
-    print(func)
-    print(call_arg)
-    return "a"
+    if func == 'o':
+        return o(call_arg)
+    elif func == 's':
+        return s(call_arg)
+    elif isinstance(func, str):
+        func_parts = func.split("_")
+        if func_parts[0] == "I" and len(func_parts) == 3:
+            return I(call_arg, int(func_parts[1]), int(func_parts[2]))
+        return 'I'

@@ -1,5 +1,4 @@
 from backend.Herban_Gyodel_Klini.spliting import split_expression
-# from herbran_functions import *
 from .herbran_functions import *
 
 def parse_herban_gyodel_klini(function_name, function, callable_argument, functions_array):
@@ -13,8 +12,11 @@ def parse_herban_gyodel_klini(function_name, function, callable_argument, functi
     # print("callable_argument: ", callable_argument)
     # print("functions_array: ", functions_array)
 
-    if func[0] == 'S' and len(functions) == int(func[2]) + 1 and int(func[1]) == len(callable_argument):
-        return S(functions, callable_argument)
+    if len(func) != 3:
+        return "Error: S-i indexnery sxal en mutqagrvel"
+    
+    if func[0] == 'S':
+        return S(functions, callable_argument, int(func[1]), int(func[2]))
     else:
         # sxal funkcia
         return "error7"
