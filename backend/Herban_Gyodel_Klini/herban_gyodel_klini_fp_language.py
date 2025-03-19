@@ -1,17 +1,22 @@
-from backend.Herban_Gyodel_Klini.spliting import split_expression
+from backend.Herban_Gyodel_Klini.spliting_herbran import *
 from .herbran_functions import *
 
+# def parse_herban_gyodel_klini(function_name, function, callable_argument, functions_array):
 def parse_herban_gyodel_klini(function_name, function, callable_argument, functions_array):
-    func, functions = split_expression(function)
-    func = func.split("_")
+    func, functions = split_expression_herbran(function)
+    print("a: ", func)
+    functions = split_herbran(functions)
+    print("b: ", functions)
+    print(function_name)
+    # func = func.split("_")
     # print("func: ", func)
     # print("functions: ", functions)
-    # # mshakel function-y (function = S_2_1(o, I_1_2))
     # print("function_name: ", function_name)
     # print("function: ", functions)
     # print("callable_argument: ", callable_argument)
     # print("functions_array: ", functions_array)
-
+    
+    
     if len(func) != 3:
         return "Error: S-i indexnery sxal en mutqagrvel"
     

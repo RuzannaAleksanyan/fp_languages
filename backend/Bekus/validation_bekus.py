@@ -64,46 +64,45 @@ def splitting_arguments_bekus(input_string):
     except (ValueError, SyntaxError) as e:
         return f"Error parsing input string: {e}"
 
-def parse_expression(input_string):
-    input_string = input_string.strip()
-    tokens = []
-    balance = 0
-    current_token = []
+# def parse_expression(input_string):
+#     input_string = input_string.strip()
+#     tokens = []
+#     balance = 0
+#     current_token = []
 
-    for char in input_string:
-        if char == '(':
-            balance += 1
-            current_token.append(char)
-        elif char == ')':
-            balance -= 1
-            if balance < 0:  
-                return "error: Unmatched closing parenthesis."
-            current_token.append(char)
-            if balance == 0:
-                tokens.append(''.join(current_token).strip())
-                current_token = []
-        elif char == ' ' and balance == 0:
-            if current_token:
-                tokens.append(''.join(current_token).strip())
-                current_token = []
-        else:
-            current_token.append(char)
+#     for char in input_string:
+#         if char == '(':
+#             balance += 1
+#             current_token.append(char)
+#         elif char == ')':
+#             balance -= 1
+#             if balance < 0:  
+#                 return "error: Unmatched closing parenthesis."
+#             current_token.append(char)
+#             if balance == 0:
+#                 tokens.append(''.join(current_token).strip())
+#                 current_token = []
+#         elif char == ' ' and balance == 0:
+#             if current_token:
+#                 tokens.append(''.join(current_token).strip())
+#                 current_token = []
+#         else:
+#             current_token.append(char)
 
-    # Add any remaining token
-    if current_token:
-        tokens.append(''.join(current_token).strip())
+#     # Add any remaining token
+#     if current_token:
+#         tokens.append(''.join(current_token).strip())
 
-    if balance != 0:
-        return "error: Unmatched opening parenthesis."
+#     if balance != 0:
+#         return "error: Unmatched opening parenthesis."
 
-    return tokens
+#     return tokens
 
+# def valid_argument(arguments):
+#     def is_valid(value):
+#         return isinstance(value, (int, float)) or value in {True, False, None}
 
-def valid_argument(arguments):
-    def is_valid(value):
-        return isinstance(value, (int, float)) or value in {True, False, None}
-
-    if isinstance(arguments, list):
-        return all(is_valid(arg) for arg in arguments)
-    else:
-        return is_valid(arguments)
+#     if isinstance(arguments, list):
+#         return all(is_valid(arg) for arg in arguments)
+#     else:
+#         return is_valid(arguments)

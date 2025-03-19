@@ -1,3 +1,4 @@
+1
 C_0_2=S_2_1(o, I_1_2)
 C_0_2(2, 3)
 output: 0
@@ -14,6 +15,11 @@ C_0_2=S_3_2(o, I_1_2)
 C_0_2(2, 2, 3)
 output: Error: sxal qanakov funkcianer
 
+2
 C_1_2=S_2_1(s, S_2_1(o, I_1_2))
-C_0_2(2, 2, 3)
-output: 
+C_1_2(2, 2)
+output: 1
+
+C_1_2=S_2_1(s, S_2_1(s, I_2_2))
+C_1_2(2, 2)
+output: 4

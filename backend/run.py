@@ -57,4 +57,4 @@ def run_fp(user_input, selected_option):
                 res = "FP language selection not made"
             return res
     
-    return "error chka tenc funkcia wry petq e kanchvi"
+    return "error chka tenc funkcia vory petq e kanchvi"

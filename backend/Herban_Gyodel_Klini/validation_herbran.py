@@ -1,6 +1,4 @@
 def splitting_arguments_herbran(row):
-    print("row:", row) 
-    
     elements = row.split(",") 
     numbers = [] 
     

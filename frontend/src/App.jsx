@@ -137,7 +137,7 @@ function App() {
       });
 
       if (!response.ok) {
-        throw new Error('Server error');
+        throw new Error('Server error: ${response.status} ${response.statusText}');
       }
 
       const data = await response.json();
