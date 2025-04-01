@@ -29,11 +29,9 @@ def s(arg):
     return arg[0] + 1
 
 def S(functions, call_arg, k, n):
-    print("funcs: ", functions)
-    print("call_arg: ", call_arg)
+    print("S func: ", functions)
     print("k: ", k)
     print("n: ", n)
-
     if  k != len(call_arg):
         return "Error: sxal qanakov parametr"
     
@@ -52,6 +50,19 @@ def S(functions, call_arg, k, n):
     results = function_check(functions[0], results)
     return results
 
+def R1(functions, call_arg):
+    # print("funcs: ", functions)
+    # print("call_arg: ", call_arg)
+    x = repetition(functions[1], call_arg) 
+    print("x: ", x)
+    return "R1"
+
+def R(functions, call_arg, k):
+    print("funcs: ", functions)
+    print("call_arg: ", call_arg)
+    print("k: ", k)
+    return "R"
+
 def function_check(func, call_arg):
     if func == 'o':
         return o(call_arg)
@@ -63,12 +74,12 @@ def function_check(func, call_arg):
             return I(call_arg, int(func_parts[1]), int(func_parts[2]))
         return 'I'
     elif func[0] == 'S':
-        print("S")
         return repetition(func, call_arg)
     else:
         return "error"
     
 def repetition(function, callable_argument):
+    print(function)
     func, functions = split_expression_herbran(function)
     print("a: ", func)
     functions = split_herbran(functions)

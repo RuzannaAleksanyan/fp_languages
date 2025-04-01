@@ -21,29 +21,66 @@
 .text {
     top: 200px;
     /* text-align: center; */
-    overflow-y: auto;  
-    max-height: 850px; /* Կամ այլ արժեք՝ ըստ անհրաժեշտության */
-    padding-right: 10px; /* Ավելացրեցի, որպեսզի scrollbar-ը չկպչի տեքստին */
+    overflow-y: auto;
+    max-height: 850px;
+    padding-right: 10px;
 
-}  
+    font-family: "Poppins", sans-serif;
+    line-height: 1.8;
+    padding-bottom: 20px;
+}
 
 .text .title {
     padding-top: 40px;
-    text-align: center; /* Տեքստը կենտրոնացնում է հորիզոնական ուղղությամբ */
-    margin: 0 auto; /* Կենտրոնացնում է տարրը վիզուալորեն */
-    font-size: 36px;
-  }
-  
+    text-align: center;
+    margin: 0 auto;
+    /* font-size: 36px; */
+
+    font-size: 42px;
+    font-weight: 700;
+    color: #000000;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    /* border-bottom: 4px solid #000000; */
+    padding-bottom: 12px;
+    /* background: linear-gradient(to right, #000000, #333435); */
+    /* -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+}
+
 
 .text p {
     display: block;
     margin: 10px 0;
     margin-bottom: 10px;
     /* text-align: center; */
-    padding-left: 80px; /* Պարզապես օրինակ, եթե ցանկանում եք դառնալ խիստ պատշաճ հեռավորություն */
+    padding-left: 140px;
     padding-right: 80px;
 
     /* font-size: 20px; */
+
+    /* padding-left: 50px;
+    padding-right: 50px; */
+    font-size: 20px;
+    text-align: justify;
+    color: #181819;
+    transition: all 0.3s ease-in-out;
+}
+
+.paymanner1 {
+    padding-left: 100px;
+}
+
+.functions {
+    background-color: #e9ecef;
+    padding: 15px;
+    margin: 15px 0;
+    font-family: 'Courier New', Courier, monospace;
+
+    margin: 5px 0;
+    font-weight: bold;
+
+    padding-left: 100px;
 }
 
 .left-panel {
@@ -54,7 +91,6 @@
 .content {
     flex: 0;
 }
-
 
 /* Light mode */
 .light .infoButton {

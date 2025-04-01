@@ -16,35 +16,7 @@
 .info-page {
     display: flex;
     height: 100vh;
-}
-
-.text {
-    top: 200px;
-    /* text-align: center; */
-    overflow-y: auto;  
-    max-height: 850px; /* Կամ այլ արժեք՝ ըստ անհրաժեշտության */
-    padding-right: 10px; /* Ավելացրեցի, որպեսզի scrollbar-ը չկպչի տեքստին */
-
 }  
-
-.text .title {
-    padding-top: 40px;
-    text-align: center; /* Տեքստը կենտրոնացնում է հորիզոնական ուղղությամբ */
-    margin: 0 auto; /* Կենտրոնացնում է տարրը վիզուալորեն */
-    font-size: 36px;
-  }
-  
-
-.text p {
-    display: block;
-    margin: 10px 0;
-    margin-bottom: 10px;
-    /* text-align: center; */
-    padding-left: 80px; /* Պարզապես օրինակ, եթե ցանկանում եք դառնալ խիստ պատշաճ հեռավորություն */
-    padding-right: 80px;
-
-    /* font-size: 20px; */
-}
 
 .left-panel {
     width: 145px;
