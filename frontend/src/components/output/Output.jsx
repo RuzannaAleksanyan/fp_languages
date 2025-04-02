@@ -4,7 +4,7 @@ import classes from './Output.module.css';
 const OutputField = ({ result, isDarkMode }) => {
   return (
     <div className={`${classes.outputContainer} ${isDarkMode ? classes.dark : ''}`}>
-       <label className={classes.outputLabel}>Output</label> {/* Ուղղված է styles -> classes */}
+       <label className={classes.outputLabel}>Output</label> {}
 
       <textarea
         className={`${classes.outputField} ${isDarkMode ? classes.darkField : ''}`}

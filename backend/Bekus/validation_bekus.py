@@ -97,12 +97,3 @@ def splitting_arguments_bekus(input_string):
 #         return "error: Unmatched opening parenthesis."
 
 #     return tokens
-
-# def valid_argument(arguments):
-#     def is_valid(value):
-#         return isinstance(value, (int, float)) or value in {True, False, None}
-
-#     if isinstance(arguments, list):
-#         return all(is_valid(arg) for arg in arguments)
-#     else:
-#         return is_valid(arguments)
