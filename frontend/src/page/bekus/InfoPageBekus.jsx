@@ -1,9 +1,27 @@
 import './InfoPageBekus.css';
+import { useEffect, useState } from 'react';
 
 const InfoPageBekus = () => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    const storedMode = localStorage.getItem('isDarkMode');
+    if (storedMode) {
+      setIsDarkMode(JSON.parse(storedMode));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+  }, [isDarkMode]);
+
   return (
     <div className="info-page">
-      <div className="left-panel"></div>
+      <div className={`left-panel ${isDarkMode ? 'dark' : 'light'}`}></div>
       <div className='text'>
         <p className='title'>Բեկուսի FP լեզու</p>
         <p>Նկարագրենք (M, C, X, T) քառյակը։</p>

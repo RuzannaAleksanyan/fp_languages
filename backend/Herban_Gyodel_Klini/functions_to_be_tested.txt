@@ -22,11 +22,11 @@ output: 1
 
 C_1_2=S_2_1(s, S_2_1(s, I_2_2))
 C_1_2(2, 2)
-output: 4
+output: 4?
 
 3
 sg=R_1(0, S_2_1(s, S_2_1(o, I_1_2)))
-sg(1, 2)
+sg(1)
 output: 
 
 4

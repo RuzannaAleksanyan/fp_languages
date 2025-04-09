@@ -33,15 +33,15 @@ def receive_input():
         if not user_input:
             return jsonify({'error': 'userInput is required'}), 400
 
-        # # Check if the value exists in MongoDB
-        # existing_record = collection.find_one({'userInput': user_input})
+        # Check if the value exists in MongoDB
+        existing_record = collection.find_one({'userInput': user_input})
 
         # Process user input based on the selected option
-        # if existing_record:
-        #     output = existing_record.get('output', 'No output found')
-        #     print(f"Found in database: {existing_record}")
-        # else:
-        output = run_fp(user_input, selected_option)
+        if existing_record:
+            output = existing_record.get('output', 'No output found')
+            print(f"Found in database: {existing_record}")
+        else:
+            output = run_fp(user_input, selected_option)
        
         # Format the output
         if isinstance(output, list):

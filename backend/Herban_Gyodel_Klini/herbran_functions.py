@@ -1,4 +1,5 @@
 from backend.Herban_Gyodel_Klini.spliting_herbran import *
+from collections.abc import Iterable
 
 def I(arg_list, i, k):
     if k != len(arg_list):
@@ -12,14 +13,14 @@ def I(arg_list, i, k):
 def o(arg):
     if len(arg) != 1:
         return "error4"
-    
+    print("arg[0]: ", arg[0])
     if not isinstance(arg[0], int):
         return "error3"
     
     return 0
 
 def s(arg):
-    print("arg: ", arg)
+    print("arg1: ", arg)
     if len(arg) != 1:
         return "error5"
     
@@ -32,8 +33,10 @@ def S(functions, call_arg, k, n):
     print("S func: ", functions)
     print("k: ", k)
     print("n: ", n)
-    if  k != len(call_arg):
-        return "Error: sxal qanakov parametr"
+    print(call_arg)
+    print(functions)
+    # if  k != len(call_arg):
+    #     return "Error: sxal qanakov parametr"
     
     if n != len(functions) - 1:
         return "Error: sxal qanakov funkcianer"
@@ -51,11 +54,30 @@ def S(functions, call_arg, k, n):
     return results
 
 def R1(functions, call_arg):
-    # print("funcs: ", functions)
-    # print("call_arg: ", call_arg)
-    x = repetition(functions[1], call_arg) 
-    print("x: ", x)
-    return "R1"
+    if call_arg[0] == 0:
+        return call_arg[0]
+    h_func = functions[1]
+
+    call_arg[0] = call_arg[0] - 1
+    h_arg = [call_arg[0], h1(call_arg, functions)]
+
+    res = function_check(h_func, h_arg)
+    
+    return res
+
+def h1(n, f, h_arg=list):
+    if n[0] == 0:
+        return [n[0]]
+    
+    h_func = f[1]
+    n[0] = n[0] - 1
+    
+    result = h1(n, f)
+    h_arg = [ n[0], result if isinstance(result, list) else [result]]
+
+    res = function_check(h_func, h_arg)
+
+    return res
 
 def R(functions, call_arg, k):
     print("funcs: ", functions)
@@ -69,11 +91,14 @@ def function_check(func, call_arg):
     elif func == 's':
         return s(call_arg)
     elif func[0] == 'I':
+        
         func_parts = func.split("_")
         if func_parts[0] == "I" and len(func_parts) == 3:
             return I(call_arg, int(func_parts[1]), int(func_parts[2]))
         return 'I'
     elif func[0] == 'S':
+        print("hello")
+        print(call_arg)
         return repetition(func, call_arg)
     else:
         return "error"

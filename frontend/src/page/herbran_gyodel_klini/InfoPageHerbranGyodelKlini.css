@@ -19,14 +19,13 @@
 }  
 
 .left-panel {
-    width: 145px;
+    width: 185px;
     background-color: rgb(225, 232, 238);
 }
 
 .content {
     flex: 0;
 }
-
 
 /* Light mode */
 .light .infoButton {
