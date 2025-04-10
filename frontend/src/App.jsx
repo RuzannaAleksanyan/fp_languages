@@ -68,7 +68,9 @@ function App() {
           <DarkLight toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
           <Run onRun={handleRun} isDarkMode={isDarkMode} />
           <Clear setValue={setValue} setResult={setResult} isDarkMode={isDarkMode} />  {}
-          <DropdownButton onSelect={setSelectedOption} />
+          {/* <DropdownButton onSelect={setSelectedOption} /> */}
+          <DropdownButton onSelect={setSelectedOption} isDarkMode={isDarkMode} />
+
           <InfoButton onSelect={selectedOption} />
           <Home />
         </div>
