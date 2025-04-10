@@ -20,7 +20,7 @@ def o(arg):
     return 0
 
 def s(arg):
-    print("arg1: ", arg)
+    # print("arg1: ", arg)
     if len(arg) != 1:
         return "error5"
     
@@ -30,11 +30,11 @@ def s(arg):
     return arg[0] + 1
 
 def S(functions, call_arg, k, n):
-    print("S func: ", functions)
-    print("k: ", k)
-    print("n: ", n)
-    print(call_arg)
-    print(functions)
+    # print("S func: ", functions)
+    # print("k: ", k)
+    # print("n: ", n)
+    # print(call_arg)
+    # print(functions)
     # if  k != len(call_arg):
     #     return "Error: sxal qanakov parametr"
     
@@ -48,12 +48,15 @@ def S(functions, call_arg, k, n):
         result = function_check(func, call_arg)  
         results.append(result) 
 
-    print("func: ", result)    
+    # print("func: ", result)    
 
     results = function_check(functions[0], results)
     return results
 
 def R1(functions, call_arg):
+    if len(call_arg) > 1:
+        return "Error: sxal qanaki parametrer"
+    
     if call_arg[0] == 0:
         return call_arg[0]
     h_func = functions[1]
@@ -79,11 +82,41 @@ def h1(n, f, h_arg=list):
 
     return res
 
-def R(functions, call_arg, k):
-    print("funcs: ", functions)
-    print("call_arg: ", call_arg)
-    print("k: ", k)
-    return "R"
+def Rk(functions, call_arg, k):
+    if len(call_arg) != 2:
+        return "Error: sxal qanaki parametrer"
+    
+    if call_arg[k - 1] == 0:
+        res = function_check(functions[0], call_arg[:-1])
+        return res
+    
+    h_func = functions[1]
+
+    call_arg[k - 1] = call_arg[k - 1] - 1
+    
+    res = hk(call_arg, k, functions)
+    h_arg = call_arg + res
+    
+    print("arg7:  ", h_arg)
+    print(h_func)
+    res = function_check(h_func, h_arg)
+    print("7a: ", res)
+    return res
+    
+def hk(call_arg, k, f):
+    if call_arg[k - 1] == 0:
+        res = function_check(f[0], call_arg)
+        return [res]
+    
+    h_func = f[1]
+    call_arg[k - 1] = call_arg[k - 1] - 1
+    
+    result = hk(call_arg, k, f)
+    result = result if isinstance(result, list) else [result]
+    h_arg = call_arg + result
+
+    res = function_check(h_func, h_arg)
+    return [res]
 
 def function_check(func, call_arg):
     if func == 'o':
@@ -97,8 +130,6 @@ def function_check(func, call_arg):
             return I(call_arg, int(func_parts[1]), int(func_parts[2]))
         return 'I'
     elif func[0] == 'S':
-        print("hello")
-        print(call_arg)
         return repetition(func, call_arg)
     else:
         return "error"
@@ -106,9 +137,9 @@ def function_check(func, call_arg):
 def repetition(function, callable_argument):
     print(function)
     func, functions = split_expression_herbran(function)
-    print("a: ", func)
+    # print("a: ", func)
     functions = split_herbran(functions)
-    print("b: ", functions)
+    # print("b: ", functions)
    
     
     if len(func) != 3:

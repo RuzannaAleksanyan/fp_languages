@@ -19,7 +19,7 @@ def parse_herban_gyodel_klini(function_name, function, callable_argument, functi
         if int(func[1]) == 1:
             return R1(functions, callable_argument)
         
-        return R(functions, callable_argument, int(func[1]))
+        return Rk(functions, callable_argument, int(func[1]))
     else:
         # sxal funkcia
         return "error7"
