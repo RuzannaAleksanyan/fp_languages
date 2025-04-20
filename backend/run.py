@@ -21,9 +21,9 @@ def run_fp(user_input, selected_option):
                 if row[-1] != ')':
                     return "error: A function call does not end with a closing parenthesis."
                 row = row[:-1]
-                if selected_option == "Bekus fp language":
+                if selected_option == " Bekus fp language":
                     arguments = splitting_arguments_bekus(row)
-                elif selected_option == "Herbrand Godel Klini fp language": 
+                elif selected_option == " Herbrand Godel Klini fp language": 
                     arguments = splitting_arguments_herbran(row)
                     if arguments == "Invalid input":
                         return arguments
@@ -49,9 +49,9 @@ def run_fp(user_input, selected_option):
             
             functions_set = dict(processed_rows[:-1])
             
-            if selected_option == "Bekus fp language":
+            if selected_option == " Bekus fp language":
                 res = parse_bekus(processed_rows[i][1], processed_rows[-1][1], functions_set)
-            elif selected_option == "Herbrand Godel Klini fp language": 
+            elif selected_option == " Herbrand Godel Klini fp language": 
                 res = parse_herban_gyodel_klini(processed_rows[i][0][0], processed_rows[i][1], processed_rows[-1][1], functions_set)
             else:
                 res = "FP language selection not made"

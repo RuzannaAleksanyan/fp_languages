@@ -5,9 +5,7 @@
 .inputField {
   width: 785px;
   height: 80vh;
-
   font-size: 25px;
-
   background-color: #f4f4f4;
 }
 
@@ -18,7 +16,5 @@
 }
 
 .inputContainer textarea {
-  margin-top: 10px; 
+  margin-top: 10px;
 }
-
-

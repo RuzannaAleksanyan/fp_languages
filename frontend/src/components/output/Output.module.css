@@ -1,16 +1,13 @@
 .outputContainer {
   padding: 20px 32px 0 44px;
-
   right: 240%;
 }
 
 .outputField {
   width: 785px;
   height: 80vh;
-
   font-size: 25px;
   background-color: #f4f4f4;
-
   background-image: radial-gradient(circle, #d2d1d1 1px, transparent 1px);
   background-size: 20px 20px;
 }
@@ -22,5 +19,5 @@
 }
 
 .outputContainer textarea {
-  margin-top: 10px;  
+  margin-top: 10px;
 }

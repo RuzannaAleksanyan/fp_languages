@@ -15,8 +15,6 @@ def is_single_element(input_string):
     return bool(input_string.strip())
 
 def splitting_arguments_bekus(input_string):
-    print(input_string)
-    
     if not (input_string.startswith("(") and input_string.endswith(")")):
         if is_single_element(input_string):
             if input_string == "true":
@@ -51,7 +49,7 @@ def splitting_arguments_bekus(input_string):
                               formatted_string)
 
     formatted_string = add_commas(formatted_string)
-    print("Formatted string:", formatted_string)  # Debugging
+    print("Formatted string:", formatted_string)  
 
     try:
         parsed_list = ast.literal_eval(formatted_string)
@@ -63,37 +61,3 @@ def splitting_arguments_bekus(input_string):
             return "Input string is not a valid list representation."
     except (ValueError, SyntaxError) as e:
         return f"Error parsing input string: {e}"
-
-# def parse_expression(input_string):
-#     input_string = input_string.strip()
-#     tokens = []
-#     balance = 0
-#     current_token = []
-
-#     for char in input_string:
-#         if char == '(':
-#             balance += 1
-#             current_token.append(char)
-#         elif char == ')':
-#             balance -= 1
-#             if balance < 0:  
-#                 return "error: Unmatched closing parenthesis."
-#             current_token.append(char)
-#             if balance == 0:
-#                 tokens.append(''.join(current_token).strip())
-#                 current_token = []
-#         elif char == ' ' and balance == 0:
-#             if current_token:
-#                 tokens.append(''.join(current_token).strip())
-#                 current_token = []
-#         else:
-#             current_token.append(char)
-
-#     # Add any remaining token
-#     if current_token:
-#         tokens.append(''.join(current_token).strip())
-
-#     if balance != 0:
-#         return "error: Unmatched opening parenthesis."
-
-#     return tokens

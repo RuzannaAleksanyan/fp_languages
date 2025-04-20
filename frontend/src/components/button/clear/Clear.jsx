@@ -21,9 +21,7 @@ const ClearField = ({ value, setValue, isDarkMode }) => {
       <FontAwesomeIcon
         icon={faTrash}
         className={`${classes.icon} ${isDarkMode ? classes.dark : classes.light}`}
-      /> 
-      
-      {/* <span className={`${classes.tooltip} ${isDarkMode ? classes.dark : ''}`}></span> */}
+      />
     </button>
   );
 };

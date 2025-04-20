@@ -6,9 +6,7 @@ import classes from './Home.module.css';
 function Home() {
   return (
     <Link to="/">
-      <img src={homeIcon} alt="Home" className={classes.icone}/>
-      {/* <HomeIcon className={classes.icone} style={{ fill: 'black' }} /> */}
-
+      <img src={homeIcon} alt="Home" className={classes.icone} />
     </Link>
   );
 }

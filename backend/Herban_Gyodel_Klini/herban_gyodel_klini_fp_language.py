@@ -4,9 +4,7 @@ from .herbran_functions import *
 # def parse_herban_gyodel_klini(function_name, function, callable_argument, functions_array):
 def parse_herban_gyodel_klini(function_name, function, callable_argument, functions_array):
     func, functions = split_expression_herbran(function)
-    # print("a: ", func)
     functions = split_herbran(functions)
-    # print("b: ", functions)   
     
     if function[0] == 'S':
         if len(func) != 3:

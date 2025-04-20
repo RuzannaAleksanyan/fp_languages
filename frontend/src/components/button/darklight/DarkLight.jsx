@@ -13,7 +13,6 @@ const DarkLight = ({ toggleDarkMode, isDarkMode }) => {
         icon={isDarkMode ? faSun : faMoon}
         className={`${classes.icon} ${isDarkMode ? classes.dark : classes.light}`}
       />
-      {/* <span className={classes.tooltip}>{isDarkMode ? 'Light Mode' : 'Dark Mode'}</span> */}
     </button>
   );
 };

@@ -3,7 +3,6 @@ f2=comp(*, constr(id, comp(f1, comp(-, constr(id, const(1))))))
 f1(1)
 output: 
 f1(0) = 1
-f1(0) = 0
 f1((1 2)) = error {eq}
 
 f1=cond(eq, const(1), f2)

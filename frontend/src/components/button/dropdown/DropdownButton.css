@@ -1,78 +1,13 @@
-/* .dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-button {
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 370px;
-    height: 40px;
-    left: 120px;
-    font-size: 19px;
-    position: absolute;
-    top: 28px;
-}
-
-.dropdown-menu {
-    position: absolute;
-    top: 70px;
-    left: 120px;
-    width: 370px;
-
-    background: #f0f0f0;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-}
-
-.dropdown-menu div {
-    padding: 15px;
-    cursor: pointer;
-}
-
-.dropdown-menu div:hover {
-    background-color: #f0f0f0;
-}
-
-.dropdown-button {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    padding: 10px 15px;
-}
-
-.dropdown-icon {
-    width: 20px; 
-    height: 20px;
-}
-
-.dropdown-chevron {
-    width: 18px;
-    height: 18px;
-    margin-left: auto; 
-} */
-
-
-/* Հիմնական dropdown ստիլներ */
 .dropdown {
     position: relative;
     display: inline-block;
 }
 
-/* Ընդհանուր կոճակի տեսք */
 .dropdown-button {
     padding: 10px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -86,25 +21,22 @@
     color: #000000;
 }
 
-/* Dropdown button icons */
 .dropdown-icon {
-    width: 20px; 
+    width: 20px;
     height: 20px;
 }
 
 .dropdown-chevron {
     width: 18px;
     height: 18px;
-    margin-left: auto; 
+    margin-left: auto;
 }
 
-/* Menu ոճավորումը լռելյայն */
 .dropdown-menu {
     position: absolute;
     top: 70px;
     left: 120px;
     width: 370px;
-
     background: #f0f0f0;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
@@ -120,7 +52,6 @@
     background-color: #e0e0e0;
 }
 
-/* DARK MODE Տարբերակ body.dark-mode-ի հիման վրա */
 body.dark-mode .dropdown-button {
     background-color: #2e2e2e;
     color: #ffffff;

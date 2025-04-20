@@ -4,7 +4,7 @@ import classes from './Input.module.css';
 const InputField = ({ value, setValue, isDarkMode }) => {
   return (
     <div className={`${classes.inputContainer} ${isDarkMode ? classes.dark : ''}`}>
-      <label className={classes.inputLabel}>Input</label> {}
+      <label className={classes.inputLabel}>Input</label> { }
       <textarea
         value={value}
         onChange={(e) => setValue(e.target.value)}

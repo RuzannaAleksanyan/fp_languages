@@ -8,7 +8,7 @@ import DarkLight from './components/button/darklight/DarkLight';
 import Clear from './components/button/clear/Clear';
 import DropdownButton from './components/button/dropdown/DropdownButton';
 import InfoButton from './components/button/info/InfoButton';
-import InfoPageBekus from './page/bekus/InfoPageBekus';  
+import InfoPageBekus from './page/bekus/InfoPageBekus';
 import InfoPageHerbran from './page/herbran_gyodel_klini/InfoPageHerbranGyodelKlini'
 import Home from './components/button/home/Home';
 
@@ -67,10 +67,8 @@ function App() {
         <div className={`buttons ${isDarkMode ? 'dark' : 'light'}`}>
           <DarkLight toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
           <Run onRun={handleRun} isDarkMode={isDarkMode} />
-          <Clear setValue={setValue} setResult={setResult} isDarkMode={isDarkMode} />  {}
-          {/* <DropdownButton onSelect={setSelectedOption} /> */}
+          <Clear setValue={setValue} setResult={setResult} isDarkMode={isDarkMode} />  { }
           <DropdownButton onSelect={setSelectedOption} isDarkMode={isDarkMode} />
-
           <InfoButton onSelect={selectedOption} />
           <Home />
         </div>
@@ -86,7 +84,7 @@ function App() {
             }
           />
           <Route path="/info-bekus" element={<InfoPageBekus />} />
-          <Route path="/info-herbrand" element={<InfoPageHerbran />} />  {}
+          <Route path="/info-herbrand" element={<InfoPageHerbran />} />  { }
         </Routes>
       </div>
     </Router>

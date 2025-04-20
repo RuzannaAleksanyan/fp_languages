@@ -53,19 +53,13 @@ def apndr(arguments):
     
     if not isinstance(arr, (list, dict)) :
         arr = [arr]
-    
-    # if not isinstance(x, list) and not isinstance(arr, list):
-    #     return "error11"
-
+  
     arr.append(x)
     return arr
 
 def null(arguments):
     if isinstance(arguments, list) and len(arguments) == 0:
         return False
-    
-    # if isinstance(arguments, list):
-    #     return "error12"
 
     if arguments == None or arguments == '':
         return True
@@ -81,7 +75,6 @@ def atom(arguments):
     return False
 
 def eq(arguments):
-    # print("arg: ", arguments)
     if not isinstance(arguments, list):
         return "error: eq: Invalid arguments."
    
@@ -90,9 +83,7 @@ def eq(arguments):
     
     return arguments[0] == arguments[1]
     
-# qnnarkel 0-i depqy
 def add(arguments):
-    # print("arg: ", arguments)
     if not isinstance(arguments, list):
         return "error: add: Invalid arguments."
     
@@ -118,10 +109,6 @@ def sub(arguments):
     if len(arguments) != 2:
         return "error: The + function was passed the wrong number of arguments."
     
-    # ??
-    # if (arguments[0] in [True, False, None] and not isinstance(arguments[0], list)) or (arguments[1] in [True, False, None] and not isinstance(arguments[1], list)):
-    #     return "error19"
-    
     if isinstance(arguments[0], int) and isinstance(arguments[1], int):   
         return arguments[0] - arguments[1]
     else:
@@ -133,9 +120,6 @@ def mul(arguments):
     
     if len(arguments) != 2:
         return "error: The + function was passed the wrong number of arguments."
-    
-    # if (arguments[0] in [True, False, None] and not isinstance(arguments[0], list)) or (arguments[1] in [True, False, None] and not isinstance(arguments[1], list)):
-    #     return "error22"
     
     if isinstance(arguments[0], int) and isinstance(arguments[1], int):   
         return arguments[0] * arguments[1]
@@ -212,8 +196,6 @@ def function_check(func, callable_argument, functions_array):
         return apndl(callable_argument)
     elif func == "apndr":
         return apndr(callable_argument)
-    # elif func == "const":
-    #     return const(callable_argument)
     else:
         return "stugel zangvacum"
     

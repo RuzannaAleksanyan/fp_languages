@@ -20,7 +20,6 @@ def o(arg):
     return 0
 
 def s(arg):
-    # print("arg1: ", arg)
     if len(arg) != 1:
         return "error5"
     
@@ -30,14 +29,6 @@ def s(arg):
     return arg[0] + 1
 
 def S(functions, call_arg, k, n):
-    # print("S func: ", functions)
-    # print("k: ", k)
-    # print("n: ", n)
-    # print(call_arg)
-    # print(functions)
-    # if  k != len(call_arg):
-    #     return "Error: sxal qanakov parametr"
-    
     if n != len(functions) - 1:
         return "Error: sxal qanakov funkcianer"
 
@@ -47,8 +38,6 @@ def S(functions, call_arg, k, n):
             continue
         result = function_check(func, call_arg)  
         results.append(result) 
-
-    # print("func: ", result)    
 
     results = function_check(functions[0], results)
     return results
@@ -137,10 +126,7 @@ def function_check(func, call_arg):
 def repetition(function, callable_argument):
     print(function)
     func, functions = split_expression_herbran(function)
-    # print("a: ", func)
     functions = split_herbran(functions)
-    # print("b: ", functions)
-   
     
     if len(func) != 3:
         return "Error: S-i indexnery sxal en mutqagrvel"
@@ -148,5 +134,4 @@ def repetition(function, callable_argument):
     if func[0] == 'S':
         return S(functions, callable_argument, int(func[1]), int(func[2]))
     else:
-        # sxal funkcia
         return "error7"

@@ -5,9 +5,9 @@
   border-radius: 5px;
   border: none;
   transition: background-color 0.3s ease, color 0.3s ease;
-  position: relative; 
+  position: relative;
   top: 10px;
-  left: 94vh; 
+  left: 94vh;
 }
 
 .light {
@@ -17,7 +17,6 @@
 
 .dark {
   background-color: #3b3a3a;
-  /* color: white; */
 }
 
 .icon {

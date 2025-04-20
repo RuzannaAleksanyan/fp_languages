@@ -4,7 +4,6 @@ def split_expression_herbran(expression):
     try:
         expression = expression.strip()
         
-        # First, determine the correct regex pattern
         if expression.startswith('S'):
             pattern = r"^([A-Za-z]+)_([0-9]+)_([0-9]+)(?:\((.*)\))?$"
         elif expression.startswith('R'):
@@ -17,12 +16,10 @@ def split_expression_herbran(expression):
         if not match:
             return "Invalid format", []
 
-        # Extract the variable components
         variable = [match.group(1), match.group(2)]
         if expression.startswith('S'):
             variable.append(match.group(3))
         
-        # Extract the values safely
         values = []
         if match.lastindex and match.lastindex >= 3:
             last_group = match.group(match.lastindex)

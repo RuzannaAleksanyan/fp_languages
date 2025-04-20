@@ -6,8 +6,6 @@ import os
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
 sys.path.append(os.path.dirname(current_dir))
-# from backend.Bekus.bekus_fp_language import run_bekus_fp
-# from backend.Herban_Gyodel_Klini.herban_gyodel_klini_fp_language import run_herban_gyodel_klini_fp
 from pymongo import MongoClient
 from backend.run import run_fp
 
@@ -24,11 +22,11 @@ def receive_input():
     try:
         # Get JSON data from request
         data = request.get_json()
-        print("Received data:", data)  # Debugging log
+        print("Received data:", data) 
         user_input = data.get('userInput')
         selected_option = data.get('selectedOption')
 
-        print("Dropdown Selected Option:", selected_option)  # Debugging log
+        print("Dropdown Selected Option:", selected_option) 
 
         if not user_input:
             return jsonify({'error': 'userInput is required'}), 400

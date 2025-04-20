@@ -3,7 +3,7 @@ import './InfoPageHerbranGyodelKlini';
 const InfoPageHerbranGyodelKlini = () => {
   return (
     <div className="info-page">
-      <div className="left-panel"></div> 
+      <div className="left-panel"></div>
       <div className='text'>
         <p className='title'>Հերբրան֊Գյոդել֊Կլինիի FP լեզու</p>
         <p>Նկարագրենք (M,C,X,T) քառյակը։</p>
@@ -85,7 +85,7 @@ const InfoPageHerbranGyodelKlini = () => {
         <p>F^(1) = M1(R2(I_1_1, S_3_1(s, I_3_3)))</p>
         <p>T ⊂ Λ(C) ⊂ Λ(C,X), որտեղ T֊ն այն թերմերի բազմությունն է, որոնք կառուցվում են՝ օգտագործելով միայն հաստատուններ C֊ից, ընդ որում, M բազմությանը պատկանող հաստատունները հանդիսանում են միայն R1 ֆունկցիոնալի առաջին րգումենտի արժեք։</p>
       </div>
-      
+
     </div>
   );
 };
