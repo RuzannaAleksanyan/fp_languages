@@ -19,5 +19,4 @@ def parse_herban_gyodel_klini(function_name, function, callable_argument, functi
         
         return Rk(functions, callable_argument, int(func[1]))
     else:
-        # sxal funkcia
-        return "error7"
+        return "Error: Invalid function"

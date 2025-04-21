@@ -27,11 +27,9 @@ def parse_bekus(function, callable_argument, functions_array):
 
 def function_validation(func, callable_argument, functions_array, arg=""):
     if not arg:
-        if func == "const":
-            return "error1"
         result = function_check(func, callable_argument, functions_array)
         
-        if result == "stugel zangvacum":
+        if result == "function check in array":
             for key, value in list(functions_array.items()):  
                 if func == key[0]: 
                     new_func = value  

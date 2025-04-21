@@ -49,13 +49,13 @@ def splitting_arguments_bekus(input_string):
                               formatted_string)
 
     formatted_string = add_commas(formatted_string)
-    print("Formatted string:", formatted_string)  
+    # print("Formatted string:", formatted_string)  
 
     try:
         parsed_list = ast.literal_eval(formatted_string)
         
         if isinstance(parsed_list, list):
-            print("Parsed list:", parsed_list)
+            # print("Parsed list:", parsed_list)
             return parsed_list
         else:
             return "Input string is not a valid list representation."

@@ -7,6 +7,6 @@ def splitting_arguments_herbran(row):
         if element.isdigit():  
             numbers.append(int(element)) 
         else:
-            return "Invalid input"
+            return "Error: Invalid input"
     
     return numbers

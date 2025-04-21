@@ -91,7 +91,6 @@ def add(arguments):
     if len(arguments) != 2:
         return "error: The + function was passed the wrong number of arguments."
     
-    # print("hello: ", arguments)
     # ???
     # if (arguments[0] in [True, False, None] and not isinstance(arguments[0], list)) or (arguments[1] in [True, False, None] and not isinstance(arguments[1], list)):
     #     return "error16"
@@ -197,5 +196,5 @@ def function_check(func, callable_argument, functions_array):
     elif func == "apndr":
         return apndr(callable_argument)
     else:
-        return "stugel zangvacum"
+        return "function check in array"
     
