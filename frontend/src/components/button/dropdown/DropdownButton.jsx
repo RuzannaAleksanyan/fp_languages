@@ -44,9 +44,9 @@ function DropdownButton({ onSelect, isDarkMode }) {
     const isInfoPage = location.pathname === "/info-bekus" || location.pathname === "/info-herbrand";
 
     if (isInfoPage) {
-      if (option === 'Bekus fp language' && location.pathname !== "/info-bekus") {
+      if (option === ' Bekus fp language' && location.pathname !== "/info-bekus") {
         navigate("/info-bekus");
-      } else if (option === 'Herbrand Godel Klini fp language' && location.pathname !== "/info-herbrand") {
+      } else if (option === ' Herbrand Godel Klini fp language' && location.pathname !== "/info-herbrand") {
         navigate("/info-herbrand");
       }
     }

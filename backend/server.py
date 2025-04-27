@@ -64,6 +64,5 @@ def receive_input():
         print(f"Error: {e}")
         return jsonify({'error': 'An unexpected error occurred'}), 500
     
-
 if __name__ == '__main__':
     app.run(port=5000, debug=True)
