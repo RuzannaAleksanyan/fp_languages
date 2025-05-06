@@ -46,7 +46,7 @@ function DropdownButton({ onSelect, isDarkMode }) {
     if (isInfoPage) {
       if (option === ' Bekus fp language' && location.pathname !== "/info-bekus") {
         navigate("/info-bekus");
-      } else if (option === ' Herbrand Godel Klini fp language' && location.pathname !== "/info-herbrand") {
+      } else if (option === ' Herbrand Godel Klini language' && location.pathname !== "/info-herbrand") {
         navigate("/info-herbrand");
       }
     }
@@ -65,7 +65,7 @@ function DropdownButton({ onSelect, isDarkMode }) {
       {isMenuOpen && (
         <div className={`dropdown-menu ${isDarkMode ? 'dark' : 'light'}`}>
           <div onClick={() => handleOptionSelect(' Bekus fp language')}> Bekus fp language </div>
-          <div onClick={() => handleOptionSelect(' Herbrand Godel Klini fp language')}> Herbrand Godel Klini fp language </div>
+          <div onClick={() => handleOptionSelect(' Herbrand Godel Klini language')}> Herbrand Godel Klini language </div>
         </div>
       )}
     </div>

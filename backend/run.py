@@ -23,7 +23,7 @@ def run_fp(user_input, selected_option):
                 row = row[:-1]
                 if selected_option == " Bekus fp language":
                     arguments = splitting_arguments_bekus(row)
-                elif selected_option == " Herbrand Godel Klini fp language": 
+                elif selected_option == " Herbrand Godel Klini language": 
                     arguments = splitting_arguments_herbran(row)
                     if arguments == "Invalid input":
                         return arguments
@@ -51,7 +51,7 @@ def run_fp(user_input, selected_option):
             
             if selected_option == " Bekus fp language":
                 res = parse_bekus(processed_rows[i][1], processed_rows[-1][1], functions_set)
-            elif selected_option == " Herbrand Godel Klini fp language": 
+            elif selected_option == " Herbrand Godel Klini language": 
                 res = parse_herban_gyodel_klini(processed_rows[i][0][0], processed_rows[i][1], processed_rows[-1][1], functions_set)
             else:
                 res = "FP language selection not made"
